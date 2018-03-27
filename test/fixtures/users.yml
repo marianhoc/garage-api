@@ -1,9 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
+  first_name: MyString
+  last_name: MyString
+  cpf: 1
+  email: MyString
+  birth: 
+  tel: 1
+  password_digest: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  cpf: 1
+  email: MyString
+  birth: 
+  tel: 1
+  password_digest: MyString
+=======
   name: MyString
   cpf: 1
 
 two:
   name: MyString
   cpf: 1
+>>>>>>> new-login
