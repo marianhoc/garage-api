@@ -10,20 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180323170521) do
-
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "cpf"
-    t.string "email"
-    t.date "birth"
-    t.integer "tel"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
 ActiveRecord::Schema.define(version: 20180327013819) do
 
   create_table "users", force: :cascade do |t|
@@ -45,7 +31,6 @@ ActiveRecord::Schema.define(version: 20180327013819) do
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
->>>>>>> new-login
   end
 
 end
