@@ -5,15 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-100.times do
 
-  @contador =1;
+100.times do |index|
 
-  User.create(name: "username",
-              cpf: 13245,
-              email: "in"+@contador+"@junior.com",
-              password: BCrypt::Password.create('123456')
-
-  )
+  User.create(name: Faker::Name.name,
+              cpf: "13245",
+              email: "in-#(index)@junior.com"
+              )
 
 end
+
+
