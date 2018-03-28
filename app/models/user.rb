@@ -1,7 +1,5 @@
 class User < ApplicationRecord
 
-  has_secure_password
-
   acts_as_token_authenticatable
 
   # Include default devise modules. Others available are:

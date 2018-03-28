@@ -10,7 +10,9 @@
 
   User.create(name: Faker::Name.name,
               cpf: "13245",
-              email: "in-#(index)@junior.com"
+              email: "in-#{index}@junior.com",
+              password: "123456",
+              password_confirmation: "123456"
               )
 
 end
