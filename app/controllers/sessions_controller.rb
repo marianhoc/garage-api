@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     else
       head(:unauthorized)
 
-
     end
 
 
@@ -18,6 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+
+
 
   end
 
