@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
+User.destroy_all
 100.times do |index|
   User.create(name: Faker::Name.name,
               cpf: rand(11111 .. 99999),
@@ -18,4 +18,12 @@ User.delete_all
 
 end
 
-
+Estacionamento.destroy_all
+100.times do |index|
+  Estacionamento.create(nome: Faker::Name.name,
+              endereco: Faker::Name.name,
+              telefone: rand(11111111 .. 99999999),
+              razao_social: Faker::Name.name,
+              cnpj: rand(11111111 .. 99999999)
+              )
+end

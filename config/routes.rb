@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estacionamentos
   devise_for :users
   resources :users, except: :show
 
