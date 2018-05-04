@@ -30,7 +30,7 @@ Estacionamento.destroy_all
   Parceiro.destroy_all
   100.times do |index|
     Parceiro.create(nome: Faker::Name.name,
-                cnpj: rand(11111111 .. 99999999)
+                cnpj: rand(11111111 .. 99999999),
                 telefone: rand(11111111 .. 99999999)
                 )
 end
