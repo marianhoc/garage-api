@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :parceiros
   resources :estacionamentos
   devise_for :users
-  resources :users, except: :show
-
-  get '/users/:token', to: 'users#show', as: :user_path
+  resources :users
 
   resources :sessions, only:  [:create, :destroy]
 

@@ -43,11 +43,20 @@ class UsersController < ApplicationController
     def set_user
       # @user = User.find(params[:id])
       # procura de usuario pelo token 
-      @user = User.where(authentication_token: (params[:token])).first
+      
+      @user = User.where(authentication_token: (params[:id])).first
     end
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :cpf, :email, :birth, :tel, :password, :password_confirmation, :token)
+      params.require(:user)
+            .permit(:name,
+                    :cpf,
+                    :email, 
+                    :birth, 
+                    :tel, 
+                    :password, 
+                    :password_confirmation, 
+                    :token)
     end
 end
