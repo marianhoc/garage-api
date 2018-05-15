@@ -3,7 +3,7 @@ class ParceirosController < ApplicationController
 
   # GET /parceiros
   def index
-    @parceiros = Parceiro.all
+    @parceiros = Partner.all
 
     render json: @parceiros
   end
@@ -15,37 +15,50 @@ class ParceirosController < ApplicationController
 
   # POST /parceiros
   def create
-    @parceiro = Parceiro.new(parceiro_params)
+    user = User.new(parceiro_params)
 
-    if @parceiro.save
-      render json: @parceiro, status: :created, location: @parceiro
+    if user.save
+      @parceiro = user.build_partner
+      if @parceiro.save
+        render json: @parceiro, status: :created, location: @parceiro
+      else
+        render json: @parceiro.errors, status: :unprocessable_entity
+      end
     else
-      render json: @parceiro.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /parceiros/1
   def update
-    if @parceiro.update(parceiro_params)
+    if @parceiro.user.update(parceiro_params)
       render json: @parceiro
     else
-      render json: @parceiro.errors, status: :unprocessable_entity
+      render json: @parceiro.user.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /parceiros/1
   def destroy
-    @parceiro.destroy
+    @parceiro.user.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_parceiro
-      @parceiro = Parceiro.find(params[:id])
+      @parceiro = Partner.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def parceiro_params
-      params.require(:parceiro).permit(:nome, :cnpj, :telefone)
+      params.require(:parceiro)
+            .permit(:name,
+                    :cpf,
+                    :email, 
+                    :birth, 
+                    :tel, 
+                    :password, 
+                    :password_confirmation, 
+                    :token)
     end
 end

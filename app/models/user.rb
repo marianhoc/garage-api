@@ -7,5 +7,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :partner, dependent: :destroy
 
+  def parceiro?
+    return true if self.partner
+    false
+  end
 end
