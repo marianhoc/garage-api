@@ -51,7 +51,7 @@ class ParceirosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def parceiro_params
-      params.require(:parceiro)
+      params.require(:user)
             .permit(:name,
                     :cpf,
                     :email, 
