@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516005448) do
+ActiveRecord::Schema.define(version: 20180516011909) do
+
+  create_table "credits", force: :cascade do |t|
+    t.integer "normal_user_id"
+    t.bigint "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["normal_user_id"], name: "index_credits_on_normal_user_id"
+  end
 
   create_table "estacionamentos", force: :cascade do |t|
     t.string "nome"
@@ -23,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180516005448) do
   end
 
   create_table "normal_users", force: :cascade do |t|
-    t.bigint "points"
+    t.bigint "balance", default: 0
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

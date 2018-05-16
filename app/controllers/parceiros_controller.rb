@@ -31,10 +31,11 @@ class ParceirosController < ApplicationController
 
   # PATCH/PUT /parceiros/1
   def update
-    if @parceiro.user.update(parceiro_params)
+    @user = @parceiro.user
+    if @user.update(parceiro_params)
       render json: @parceiro
     else
-      render json: @parceiro.user.errors, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 

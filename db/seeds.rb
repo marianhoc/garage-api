@@ -18,7 +18,7 @@ User.destroy_all
   if index > 50
     u.build_partner.save
   else
-    u.build_normal_user.save
+    u.build_normal_user(balance: index).save
   end
 end
 
