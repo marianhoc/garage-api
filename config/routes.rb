@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :normal_users
   resources :parceiros
   resources :estacionamentos
   devise_for :users

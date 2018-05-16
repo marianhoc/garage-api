@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one :partner, dependent: :destroy
 
+  has_one :normal_user, dependent: :destroy
+
   def parceiro?
     return true if self.partner
     false
