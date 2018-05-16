@@ -15,12 +15,12 @@ class ParceirosController < ApplicationController
 
   # POST /parceiros
   def create
-    user = User.new(parceiro_params)
+    user = User.new(parceiro_params_create)
 
     if user.save
       @parceiro = user.build_partner
       if @parceiro.save
-        render json: @parceiro, status: :created, location: @parceiro
+        render json: @parceiro, status: :created, location: parceiro_url(id: @parceiro.id)
       else
         render json: @parceiro.errors, status: :unprocessable_entity
       end
@@ -52,6 +52,18 @@ class ParceirosController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def parceiro_params
       params.require(:user)
+            .permit(:name,
+                    :cpf,
+                    :email, 
+                    :birth, 
+                    :tel, 
+                    :password, 
+                    :password_confirmation, 
+                    :token)
+    end
+
+    def parceiro_params_create
+      params.require(:parceiro)
             .permit(:name,
                     :cpf,
                     :email, 
