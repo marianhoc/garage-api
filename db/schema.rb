@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516011909) do
+ActiveRecord::Schema.define(version: 20180517002921) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20180516011909) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lojas", force: :cascade do |t|
+    t.string "nome"
+    t.string "endereco"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "cnpj"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "store_owner_id"
+    t.index ["store_owner_id"], name: "index_lojas_on_store_owner_id"
+  end
+
   create_table "normal_users", force: :cascade do |t|
     t.bigint "balance", default: 0
     t.integer "user_id"
@@ -45,9 +57,16 @@ ActiveRecord::Schema.define(version: 20180516011909) do
     t.index ["user_id"], name: "index_partners_on_user_id"
   end
 
+  create_table "store_owners", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_store_owners_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "cpf"
     t.date "birth"
     t.integer "tel"
     t.datetime "created_at", null: false
