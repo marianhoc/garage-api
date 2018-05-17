@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :partner, dependent: :destroy
+  has_one :store_owner, dependent: :destroy
 
   has_one :normal_user, dependent: :destroy
 
