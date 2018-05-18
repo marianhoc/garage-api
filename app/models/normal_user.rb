@@ -8,7 +8,7 @@ class NormalUser < ApplicationRecord
       errors[:base] << "Insira um valor válido."
       return false
     end
-    credits = self.credits.build(value: valor.to_s)
+    credits = self.credits.build(value: valor.to_i)
     if credits.save
       return credits
     else
