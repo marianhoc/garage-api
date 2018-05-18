@@ -13,13 +13,17 @@ class StoreOwnersController < ApplicationController
       render json: { erro: ["Insira um CPF ou uma placa."] }, status: :unprocessable_entity
       return
     end
+    if !params[:nota_fiscal]
+      render json: { erro: ["Insira um código fiscal válido."] }, status: :unprocessable_entity
+      return
+    end
     @user = NormalUser.find_by(placa: params[:placa]) if params[:placa]
     @user = NormalUser.find_by(cpf: params[:cpf]) if params[:cpf]
     if @user.nil?
       render json: { erro: ["Usuário não encontrado."] }, status: :unprocessable_entity
       return
     end
-    @credit = @user.add_credits(valor = params[:valor])
+    @credit = @user.add_credits(valor = params[:valor], nota_fiscal = params[:nota_fiscal])
     if @credit != false
       render json: @credit, status: :created
     else

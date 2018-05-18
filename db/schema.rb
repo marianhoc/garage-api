@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180518150328) do
+ActiveRecord::Schema.define(version: 20180518220100) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "normal_user_id"
     t.bigint "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nota_fiscal"
     t.index ["normal_user_id"], name: "index_credits_on_normal_user_id"
   end
 
