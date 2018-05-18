@@ -1,4 +1,4 @@
 class NormalUserSerializer < ActiveModel::Serializer
-  attributes :id, :points
+  attributes :id, :balance
   belongs_to :user
 end

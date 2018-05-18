@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'store_owners/add_credits', to: 'store_owners#add_credit'
   resources :store_owners
   resources :lojas
   resources :normal_users

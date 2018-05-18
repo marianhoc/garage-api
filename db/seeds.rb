@@ -17,7 +17,10 @@ User.destroy_all
   if index > 50
     u.build_store_owner(cpf: rand(11111 .. 99999)).save
   else
-    u.build_normal_user(balance: index).save
+    u.build_normal_user(
+      balance: index, 
+      cpf: rand(11111 .. 99999),
+      placa: rand(11111 .. 99999)).save
   end
 end
 

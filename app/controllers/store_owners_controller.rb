@@ -8,6 +8,25 @@ class StoreOwnersController < ApplicationController
     render json: @store_owners
   end
 
+  def add_credit
+    if !params[:placa] && !params[:cpf]
+      render json: { erro: ["Insira um CPF ou uma placa."] }, status: :unprocessable_entity
+      return
+    end
+    @user = NormalUser.find_by(placa: params[:placa]) if params[:placa]
+    @user = NormalUser.find_by(cpf: params[:cpf]) if params[:cpf]
+    if @user.nil?
+      render json: { erro: ["Usuário não encontrado."] }, status: :unprocessable_entity
+      return
+    end
+    @credit = @user.add_credits(valor = params[:valor])
+    if @credit != false
+      render json: @credit, status: :created
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
   # GET /store_owners/1
   def show
     render json: @store_owner
