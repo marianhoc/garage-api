@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180524191146) do
+
+  create_table "credits", force: :cascade do |t|
+    t.integer "normal_user_id"
+    t.bigint "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nota_fiscal"
+    t.index ["normal_user_id"], name: "index_credits_on_normal_user_id"
+  end
+
 
   create_table "estacionamentos", force: :cascade do |t|
     t.string "nome"
@@ -22,17 +33,45 @@ ActiveRecord::Schema.define(version: 20180524191146) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "parceiros", force: :cascade do |t|
+  create_table "lojas", force: :cascade do |t|
     t.string "nome"
+    t.string "endereco"
+    t.string "latitude"
+    t.string "longitude"
     t.string "cnpj"
-    t.string "telefone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "store_owner_id"
+    t.index ["store_owner_id"], name: "index_lojas_on_store_owner_id"
+  end
+
+  create_table "normal_users", force: :cascade do |t|
+    t.bigint "balance", default: 0
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "placa"
+    t.string "cpf"
+    t.index ["user_id"], name: "index_normal_users_on_user_id"
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_partners_on_user_id"
+  end
+
+  create_table "store_owners", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_store_owners_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "cpf"
     t.date "birth"
     t.integer "tel"
     t.datetime "created_at", null: false

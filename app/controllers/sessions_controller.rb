@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     puts user
 
     if user && user.valid_password?(params[:password])
-      render json: user.as_json(only: [:email, :name, :tel, :authentication_token]), status: :created
+      render json: user, status: :created
 
 
     else

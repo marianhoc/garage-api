@@ -15,6 +15,7 @@ gem 'rails', '~> 5.1.5'
 
 gem 'faker'
 
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

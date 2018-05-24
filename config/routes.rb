@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :parceiros
+  post 'store_owners/add_credits', to: 'store_owners#add_credit'
+  resources :store_owners
+  resources :lojas
+  resources :normal_users
   resources :estacionamentos
   devise_for :users, :controllers => { :registrations => 'user_registration' }
   resources :users

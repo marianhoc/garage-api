@@ -2,11 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7061173-cf5d-4451-b972-9494063b7884" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/lojas_controller.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/normal_users_controller.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/store_owners_controller.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/models/credit.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/models/loja.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/models/normal_user.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/models/store_owner.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/credit_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/loja_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/normal_user_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/partner_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/store_owner_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/serializers/user_serializer.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180515225143_create_partners.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180516005448_create_normal_users.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180516011909_create_credits.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180517002434_create_lojas.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180517002831_create_store_owners.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180517002921_add_store_owner_to_lojas.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180518150226_add_placa_to_normal_users.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180518150328_add_cpf_to_normal_users.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20180518220100_add_nota_fiscal_to_credits.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/controllers/lojas_controller_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/controllers/normal_users_controller_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/controllers/store_owners_controller_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/credits.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/normal_users.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/partners.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/store_owners.yml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/models/loja_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/models/normal_user_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/models/partner_test.rb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/test/models/store_owner_test.rb" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/parceiros_controller.rb" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/models/parceiro.rb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180323170521_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20180323170521_create_users.rb" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180504003422_create_parceiros.rb" afterPath="" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/parceiros_controller_test.rb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/parceiros.yml" afterPath="$PROJECT_DIR$/test/fixtures/lojas.yml" />
+      <change beforePath="$PROJECT_DIR$/test/models/parceiro_test.rb" afterPath="$PROJECT_DIR$/test/models/credit_test.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -27,8 +70,10 @@
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +91,8 @@
       <file leaf-file-name="schema.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+            <state relative-caret-position="-871">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/db/migrate/20180524191146_add_last_name_to_user.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+              <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -131,7 +176,6 @@
       <list>
         <option value="$PROJECT_DIR$/db/migrate/20180323170521_create_users.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
@@ -140,6 +184,7 @@
         <option value="$PROJECT_DIR$/app/controllers/user_registration_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180524191146_add_last_name_to_user.rb" />
+        <option value="$PROJECT_DIR$/db/schema.rb" />
       </list>
     </option>
   </component>
@@ -330,12 +375,12 @@
       <workItem from="1523039911988" duration="951000" />
       <workItem from="1524527829253" duration="1608000" />
       <workItem from="1525119352499" duration="717000" />
-      <workItem from="1527183301478" duration="5064000" />
+      <workItem from="1527183301478" duration="6539000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18574000" />
+    <option name="totallyTimeSpent" value="20049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -418,7 +463,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -458,7 +505,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -482,7 +531,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -498,7 +549,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -514,7 +567,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -545,7 +600,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -593,7 +650,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -633,7 +692,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -657,7 +718,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -673,7 +736,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,7 +754,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -751,8 +818,10 @@
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1527190186381" expanded="true" signature="67:182" ph="##..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -767,7 +836,7 @@
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+          <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -791,15 +860,15 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20180524191146_add_last_name_to_user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+        <state relative-caret-position="-871">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -8,14 +8,20 @@
 
 User.destroy_all
 100.times do |index|
-  User.create(name: Faker::Name.name,
-              cpf: rand(11111 .. 99999),
+  u = User.create(name: Faker::Name.name,
               email: "#{index}@junior.com",
               tel: rand(11111 .. 99999),
               password: "123456",
               password_confirmation: "123456"
               )
-
+  if index > 50
+    u.build_store_owner(cpf: rand(11111 .. 99999)).save
+  else
+    u.build_normal_user(
+      balance: index, 
+      cpf: rand(11111 .. 99999),
+      placa: rand(11111 .. 99999)).save
+  end
 end
 
 Estacionamento.destroy_all
@@ -26,12 +32,4 @@ Estacionamento.destroy_all
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999)
               )
-  end
-  
-Parceiro.destroy_all
-  100.times do |index|
-    Parceiro.create(nome: Faker::Name.name,
-                cnpj: rand(11111111 .. 99999999),
-                telefone: rand(11111111 .. 99999999)
-                )
   end
