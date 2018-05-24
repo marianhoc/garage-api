@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    puts "======================== POST USER ==============================="
     @user = User.new(user_params)
 
     if @user.save
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
+      puts "======================== entrando no user_params ==============================="
       params.require(:user)
             .permit(:name,
                     :cpf,

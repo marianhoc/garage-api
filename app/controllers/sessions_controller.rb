@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def create
+
     user = User.where(email: params[:email]).first
+
+    puts " = = = = = = = = = = = = USER = = = == = = = = = = = == = "
+    puts user
 
     if user && user.valid_password?(params[:password])
       render json: user.as_json(only: [:email, :name, :tel, :authentication_token]), status: :created
@@ -9,6 +13,7 @@ class SessionsController < ApplicationController
 
     else
       head(:unauthorized)
+
 
     end
 

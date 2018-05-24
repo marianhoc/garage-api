@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :parceiros
   resources :estacionamentos
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'user_registration' }
   resources :users
 
   resources :sessions, only:  [:create, :destroy]
