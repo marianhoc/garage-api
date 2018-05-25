@@ -9,10 +9,11 @@
 User.destroy_all
 100.times do |index|
   u = User.create(name: Faker::Name.name,
-              email: "#{index}@junior.com",
-              tel: rand(11111 .. 99999),
-              password: "123456",
-              password_confirmation: "123456"
+                  lastname: Faker::Name.last_name,
+                  email: "#{index}@junior.com",
+                  tel: rand(11111 .. 99999),
+                  password: "123456",
+                  password_confirmation: "123456"
               )
   if index > 50
     u.build_store_owner(cpf: rand(11111 .. 99999)).save
