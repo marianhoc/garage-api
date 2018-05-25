@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       puts "======================== entrando no user_params ==============================="
       params.require(:user)
             .permit(:name,
+                    :lastname,
                     :cpf,
                     :email, 
                     :birth, 
