@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only:  [:create]
 
-  delete "/sessions/:authentication_token"
+  delete "/sessions/:authentication_token", to: "sessions#destroy"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
