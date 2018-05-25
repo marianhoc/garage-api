@@ -8,9 +8,9 @@ Rails.application.routes.draw do
              :registrations => 'user_registration' }
   resources :users
 
-  resources :sessions, only:  [:create, :destroy]
+  resources :sessions, only:  [:create]
 
-
+  delete "/sessions/:authentication_token"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
