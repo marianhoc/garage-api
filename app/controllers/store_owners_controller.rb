@@ -38,10 +38,10 @@ class StoreOwnersController < ApplicationController
 
   # POST /store_owners
   def create
-    cpf = store_owner_params_create[:cpf]
-    store_owner_params_create.delete(:cpf)
-    user = User.new(store_owner_params_create)
-
+    st_params = store_owner_params_create
+    cpf = a[:cpf]
+    st_params.delete(:cpf)
+    user = User.new(st_params)
     if user.save
       @store_owner = user.build_store_owner(cpf: cpf)
       if @store_owner.save
@@ -58,11 +58,9 @@ class StoreOwnersController < ApplicationController
   # PATCH/PUT /store_owners/1
   def update
     @user = @store_owner.user
-    cpf = store_owner_params[:cpf]
-    store_owner_params.delete(:cpf)
     
-    if @user.update(store_owner_params)
-      if @store_owner.update_attribute(:cpf, cpf)
+    if @user.update(user_params)
+      if @store_owner.update(store_owner_params)
         render json: @store_owner
       else
         render json: @store_owner.errors, status: :unprocessable_entity
@@ -84,27 +82,27 @@ class StoreOwnersController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def store_owner_params
+    def user_params
       params.require(:user)
         .permit(:name,
-          :cpf,
-          :email, 
-          :birth, 
-          :tel, 
-          :password, 
-          :password_confirmation, 
-          :token)
+                :email,
+                :password,
+                :password_confirmation,
+                :tel)
+    end
+
+    def store_owner_params
+      params.require(:store_owner)
+        .permit(:cpf)
     end
 
     def store_owner_params_create
-      params.require(:store_owner)
+      params.require(:user)
             .permit(:name,
+                    :email,
                     :cpf,
-                    :email, 
-                    :birth, 
-                    :tel, 
-                    :password, 
-                    :password_confirmation, 
-                    :token)
+                    :password,
+                    :password_confirmation,
+                    :tel)
     end
 end
