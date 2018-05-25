@@ -62,7 +62,7 @@ class StoreOwnersController < ApplicationController
     store_owner_params.delete(:cpf)
     
     if @user.update(store_owner_params)
-      if @store_owner.update_attribute(cpf: cpf)
+      if @store_owner.update_attribute(:cpf, cpf)
         render json: @store_owner
       else
         render json: @store_owner.errors, status: :unprocessable_entity
