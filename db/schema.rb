@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20180524191146) do
 
   create_table "credits", force: :cascade do |t|
@@ -21,7 +20,6 @@ ActiveRecord::Schema.define(version: 20180524191146) do
     t.string "nota_fiscal"
     t.index ["normal_user_id"], name: "index_credits_on_normal_user_id"
   end
-
 
   create_table "estacionamentos", force: :cascade do |t|
     t.string "nome"

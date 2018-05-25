@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :birth, :tel, :authentication_token, :email
+  attributes :id, :name, :lastname, :birth, :tel, :authentication_token, :email
 
   has_one :store_owner
 

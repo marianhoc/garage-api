@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :lojas
   resources :normal_users
   resources :estacionamentos
-  devise_for :users, :controllers => { :registrations => 'user_registration' }
+  devise_for :users, :controllers => { 
+             :registrations => 'user_registration' }
   resources :users
 
   resources :sessions, only:  [:create, :destroy]
