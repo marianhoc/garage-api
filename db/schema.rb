@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20180524191146) do
     t.string "telefone"
     t.string "razao_social"
     t.string "cnpj"
+    t.string "latitude"
+    t.string "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

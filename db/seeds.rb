@@ -19,18 +19,42 @@ User.destroy_all
     u.build_store_owner(cpf: rand(11111 .. 99999)).save
   else
     u.build_normal_user(
-      balance: index, 
+      balance: index,
       cpf: rand(11111 .. 99999),
       placa: rand(11111 .. 99999)).save
   end
 end
 
 Estacionamento.destroy_all
+
+Estacionamento.create(
+            nome: "Campo de São Bento",
+            endereco: Faker::Name.name,
+            telefone: rand(11111111 .. 99999999),
+            razao_social: Faker::Name.name,
+            cnpj: rand(11111111 .. 99999999),
+            latitude: "-22.9042,",
+            longitude: "-43.1074"
+            )
+
+Estacionamento.create(
+            nome: "Plaza Shopping",
+            endereco: Faker::Name.name,
+            telefone: rand(11111111 .. 99999999),
+            razao_social: Faker::Name.name,
+            cnpj: rand(11111111 .. 99999999),
+            latitude: "-22.8969",
+            longitude: "-43.1239"
+            )
+
+
 100.times do |index|
   Estacionamento.create(nome: Faker::Name.name,
               endereco: Faker::Name.name,
               telefone: rand(11111111 .. 99999999),
               razao_social: Faker::Name.name,
-              cnpj: rand(11111111 .. 99999999)
+              cnpj: rand(11111111 .. 99999999),
+              latitude: rand(1111 .. 99999),
+              longitude: rand(1111 .. 99999)
               )
   end
