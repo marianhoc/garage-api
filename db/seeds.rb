@@ -47,6 +47,15 @@ Estacionamento.create(
             longitude: "-43.1239"
             )
 
+Estacionamento.create(
+            nome: "UFF",
+            endereco: Faker::Name.name,
+            telefone: rand(11111111 .. 99999999),
+            razao_social: Faker::Name.name,
+            cnpj: rand(11111111 .. 99999999),
+            latitude: "-22.9045",
+            longitude: "-43.1329"
+            )
 
 100.times do |index|
   Estacionamento.create(nome: Faker::Name.name,
@@ -54,7 +63,7 @@ Estacionamento.create(
               telefone: rand(11111111 .. 99999999),
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999),
-              latitude: rand(1111 .. 99999),
-              longitude: rand(1111 .. 99999)
+              latitude: rand(22 .. 23).to_s+"."+rand(8900 .. 9199).to_s,
+              longitude: rand(42 .. 43).to_s+"."+rand(1000 .. 1399).to_s
               )
   end
