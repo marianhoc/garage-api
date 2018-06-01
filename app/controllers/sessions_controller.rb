@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     user = User.find_by(authentication_token: params[:authentication_token])
-    user.update_attribute(:authentication_token, nil)
+    user.update_attribute(:authentication_token, nil) if user
   end
 
 
