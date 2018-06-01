@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601152929) do
+ActiveRecord::Schema.define(version: 20180601160652) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20180601152929) do
     t.string "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "primeira_hora"
+    t.float "hora"
+    t.float "mensal"
   end
 
   create_table "lojas", force: :cascade do |t|

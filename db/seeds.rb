@@ -34,7 +34,10 @@ e = Estacionamento.create(
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.9042,",
-            longitude: "-43.1074"
+            longitude: "-43.1074",
+            primeira_hora: 5.0,
+            hora: 6.0,
+            mensal: 30.0
             )
 
 10.times do |t|
@@ -48,7 +51,10 @@ Estacionamento.create(
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.8969",
-            longitude: "-43.1239"
+            longitude: "-43.1239",
+            primeira_hora: 5.0,
+            hora: 6.0,
+            mensal: 30.0
             )
 
 Estacionamento.create(
@@ -58,7 +64,10 @@ Estacionamento.create(
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.9045",
-            longitude: "-43.1329"
+            longitude: "-43.1329",
+            primeira_hora: 5.0,
+            hora: 6.0,
+            mensal: 30.0
             )
 
 100.times do |index|
@@ -68,6 +77,9 @@ Estacionamento.create(
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999),
               latitude: rand(-22.99 .. -21.00),
-              longitude: rand(1111 .. 99999)
+              longitude: rand(1111 .. 99999),
+              primeira_hora: 5.0,
+              hora: 6.0,
+              mensal: 30.0
               )
   end
