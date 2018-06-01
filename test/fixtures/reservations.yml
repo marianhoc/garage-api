@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  normal_user: one
+  estacionamento: one
+  status: MyString
+  car_at_vacancy: false
+  programming_date: 2018-06-01 12:29:29
+  time_at_vacancy: 2018-06-01 12:29:29
+  tax_value: 1.5
+  total_value: 1.5
+
+two:
+  normal_user: two
+  estacionamento: two
+  status: MyString
+  car_at_vacancy: false
+  programming_date: 2018-06-01 12:29:29
+  time_at_vacancy: 2018-06-01 12:29:29
+  tax_value: 1.5
+  total_value: 1.5

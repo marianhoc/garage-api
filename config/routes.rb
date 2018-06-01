@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+  resources :vacancies
   post 'store_owners/add_credits', to: 'store_owners#add_credit'
   resources :store_owners
   resources :lojas

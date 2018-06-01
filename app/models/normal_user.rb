@@ -2,6 +2,8 @@ class NormalUser < ApplicationRecord
   belongs_to :user
 
   has_many :credits, dependent: :destroy
+  has_many :vacancies, dependent: :nullify
+  has_many :reservations, dependent: :destroy
 
   def add_credits(valor = 0, nota_fiscal = "")
     if valor.to_i <= 0

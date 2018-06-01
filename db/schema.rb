@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524191146) do
+ActiveRecord::Schema.define(version: 20180601152929) do
 
   create_table "credits", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -62,6 +62,21 @@ ActiveRecord::Schema.define(version: 20180524191146) do
     t.index ["user_id"], name: "index_partners_on_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "normal_user_id"
+    t.integer "estacionamento_id"
+    t.string "status"
+    t.boolean "car_at_vacancy"
+    t.datetime "programming_date"
+    t.time "time_at_vacancy"
+    t.float "tax_value"
+    t.float "total_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estacionamento_id"], name: "index_reservations_on_estacionamento_id"
+    t.index ["normal_user_id"], name: "index_reservations_on_normal_user_id"
+  end
+
   create_table "store_owners", force: :cascade do |t|
     t.integer "user_id"
     t.string "cpf"
@@ -91,6 +106,15 @@ ActiveRecord::Schema.define(version: 20180524191146) do
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.integer "estacionamento_id"
+    t.integer "normal_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estacionamento_id"], name: "index_vacancies_on_estacionamento_id"
+    t.index ["normal_user_id"], name: "index_vacancies_on_normal_user_id"
   end
 
 end

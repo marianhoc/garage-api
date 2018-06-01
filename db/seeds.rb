@@ -27,7 +27,7 @@ end
 
 Estacionamento.destroy_all
 
-Estacionamento.create(
+e = Estacionamento.create(
             nome: "Campo de São Bento",
             endereco: Faker::Name.name,
             telefone: rand(11111111 .. 99999999),
@@ -36,6 +36,10 @@ Estacionamento.create(
             latitude: "-22.9042,",
             longitude: "-43.1074"
             )
+
+10.times do |t|
+  e.vacancies.build.save
+end
 
 Estacionamento.create(
             nome: "Plaza Shopping",
