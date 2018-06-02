@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :store_owners
   resources :lojas
   resources :normal_users
+
+  get 'normal_users/:id/cars', to: 'normal_users#get_cars'
+
+
   resources :estacionamentos
   devise_for :users, :controllers => { 
              :registrations => 'user_registration' }

@@ -4,6 +4,8 @@ class NormalUser < ApplicationRecord
   has_many :credits, dependent: :destroy
   has_many :vacancies, dependent: :nullify
   has_many :reservations, dependent: :destroy
+  has_many :cars, dependent: :destroy
+
 
   def add_credits(valor = 0, nota_fiscal = "")
     if valor.to_i <= 0
@@ -19,4 +21,12 @@ class NormalUser < ApplicationRecord
       return false
     end
   end
+
+
+  def register_car()
+
+
+  end
+
+
 end

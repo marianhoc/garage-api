@@ -38,6 +38,12 @@ class NormalUsersController < ApplicationController
     @normal_user.destroy
   end
 
+   # GET /normal_users/:id/cars
+  def get_cars
+    render json: @cars = Car.where(normal_user_id: params[:id])
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_normal_user
