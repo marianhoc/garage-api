@@ -1,5 +1,6 @@
 class NormalUsersController < ApplicationController
   before_action :set_normal_user, only: [:show, :update, :destroy]
+  before_action :set_car, only: [:destroy_car]
 
   # GET /normal_users
   def index
@@ -62,7 +63,7 @@ class NormalUsersController < ApplicationController
   end
 
   def destroy_car
-    #TODO
+    @car.destroy
   end
 
 
@@ -73,6 +74,10 @@ class NormalUsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_normal_user
       @normal_user = NormalUser.find(params[:id])
+    end
+
+    def set_car
+      @car = Car.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
