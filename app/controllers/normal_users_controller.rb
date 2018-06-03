@@ -40,9 +40,34 @@ class NormalUsersController < ApplicationController
 
    # GET /normal_users/:id/cars
   def get_cars
-    render json: @cars = Car.where(normal_user_id: params[:id])
+    render json: @cars = Car.where(normal_user_id: params[:user_id])
 
   end
+
+  # POST /normal_users/:user_id/newcar
+  def save_car
+    puts " = = = = = = = = = = = = SAVE CAR  FOI  = = = = = = == = = = = = = == = = "
+
+    @car = Car.new(car_params)
+
+    puts @car.marca
+    puts @car.modelo
+
+    if @car.save
+      render json: @car, status: :created
+    else
+      render json: @car.errors, status: :unprocessable_entity
+    end
+
+  end
+
+  def destroy_car
+    #TODO
+  end
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -54,4 +79,9 @@ class NormalUsersController < ApplicationController
     def normal_user_params
       params.require(:normal_user).permit(:points, :user_id)
     end
+
+    def car_params
+      params.permit(:marca, :modelo, :cor, :placa, :normal_user_id)
+    end
+
 end
