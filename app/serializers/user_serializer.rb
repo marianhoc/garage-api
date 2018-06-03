@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   has_one :store_owner
 
   has_one :normal_user
+  has_one :dono_estacionamento
 end

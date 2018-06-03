@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :store_owner, dependent: :destroy
-
+  has_one :dono_estacionamento, dependent: :destroy
   has_one :normal_user, dependent: :destroy
 
   def parceiro?

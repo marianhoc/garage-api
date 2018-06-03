@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cards
+  resources :dono_estacionamentos
   resources :reservations
   resources :vacancies
   post 'store_owners/add_credits', to: 'store_owners#add_credit'
