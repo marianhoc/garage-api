@@ -1,3 +1,3 @@
 class Card < ApplicationRecord
-  belongs_to :user
+  belongs_to :normal_user
 end

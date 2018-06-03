@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 20180603193011) do
 
   create_table "cards", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "normal_user_id"
     t.string "numero"
     t.string "titular"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cards_on_user_id"
+    t.index ["normal_user_id"], name: "index_cards_on_normal_user_id"
   end
 
   create_table "cars", force: :cascade do |t|

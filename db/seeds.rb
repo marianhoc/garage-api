@@ -15,15 +15,18 @@ User.destroy_all
                   password: "123456",
                   password_confirmation: "123456"
               )
-  if index > 50
-    u.build_store_owner(cpf: rand(11111 .. 99999)).save
+  if ((index > 50) and (index < 90))
+    u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
+  elsif index > 90
+  u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
   else
     u.build_normal_user(
       balance: index,
-      cpf: rand(11111 .. 99999),
-      placa: rand(11111 .. 99999)).save
+      cpf: rand(11111111111 .. 22222222222),
+      placa: rand(000 .. 999)).save
   end
 end
+
 
 Estacionamento.destroy_all
 

@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   # GET /cards
   def index
-    @cards = Card.all
+    @cards = Card.find_each
 
     render json: @cards
   end
