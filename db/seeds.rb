@@ -47,18 +47,7 @@ e = Estacionamento.create(
   e.vacancies.build.save
 end
 
-Estacionamento.create(
-            nome: "Plaza Shopping",
-            endereco: Faker::Name.name,
-            telefone: rand(11111111 .. 99999999),
-            razao_social: Faker::Name.name,
-            cnpj: rand(11111111 .. 99999999),
-            latitude: "-22.8969",
-            longitude: "-43.1239",
-            primeira_hora: 5.0,
-            hora: 6.0,
-            mensal: 30.0
-            )
+Estacionamento.create(nome: "Plaza Shopping", endereco: Faker::Name.name, telefone: rand(11111111 .. 99999999), razao_social: Faker::Name.name, cnpj: rand(11111111 .. 99999999), latitude: "-22.8969", longitude: "-43.1239", primeira_hora: 5.0, hora: 6.0, mensal: 30.0)
 
 Estacionamento.create(
             nome: "UFF",

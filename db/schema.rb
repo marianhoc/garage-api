@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180603193011) do
     t.string "placa"
     t.string "modelo"
     t.string "marca"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["normal_user_id"], name: "index_cars_on_normal_user_id"
