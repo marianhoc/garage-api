@@ -6,7 +6,7 @@ class CreateCars < ActiveRecord::Migration[5.1]
       t.string :placa
       t.string :modelo
       t.string :marca
-
+      t.boolean :active, default: true
       t.timestamps
     end
   end
