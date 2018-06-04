@@ -3,7 +3,7 @@ class EstacionamentoSerializer < ActiveModel::Serializer
     :cnpj, :latitude, :longitude, :primeira_hora, :mensal, :hora,
     :created_at, :updated_at
 
-  belongs_to :dono_estacionamento
+  belongs_to :dono_estacionamentos, class_name: "DonoEstacionamento"
 
   has_many :vacancies
   has_many :reservations
