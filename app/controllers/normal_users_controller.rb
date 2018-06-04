@@ -1,6 +1,7 @@
 class NormalUsersController < ApplicationController
   before_action :set_normal_user, only: [:show, :update, :destroy]
   before_action :set_car, only: [:destroy_car]
+  before_action :set_cartao, only: [:destroy_cartao]
 
   # GET /normal_users
   def index
@@ -47,12 +48,7 @@ class NormalUsersController < ApplicationController
 
   # POST /normal_users/:user_id/newcar
   def save_car
-    puts " = = = = = = = = = = = = SAVE CAR  FOI  = = = = = = == = = = = = = == = = "
-
     @car = Car.new(car_params)
-
-    puts @car.marca
-    puts @car.modelo
 
     if @car.save
       render json: @car, status: :created
@@ -65,6 +61,34 @@ class NormalUsersController < ApplicationController
   def destroy_car
     @car.destroy
   end
+
+
+ #  =============================   CARTOES =============
+  #    # GET /normal_users/:user_id/cartoes
+  def get_cartoes
+
+    render json: @cartoes = Card.where(normal_user_id: params[:normal_user_id])
+  end
+
+  # POST /normal_users/:user_id/newcartao
+  def save_cartao
+
+
+    puts " == = = = = = == = = = = = =  == == = = = = = === = = === "
+    @cartao = Card.new(cartao_params)
+
+    if @cartao.save
+      render json: @cartao, status: :created
+    else
+      render json: @cartao.errors, status: :unprocessable_entity
+    end
+  end
+
+
+  def destroy_cartao
+    @cartao.destroy
+  end
+
 
 
 
@@ -80,7 +104,13 @@ class NormalUsersController < ApplicationController
       @car = Car.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+
+    def set_cartao
+      @cartao = Card.find(params[:id])
+    end
+
+
+  # Only allow a trusted parameter "white list" through.
     def normal_user_params
       params.require(:normal_user).permit(:points, :user_id)
     end
@@ -89,4 +119,7 @@ class NormalUsersController < ApplicationController
       params.permit(:marca, :modelo, :cor, :placa, :normal_user_id)
     end
 
+    def cartao_params
+      params.permit(:numero, :titular, :normal_user_id)
+    end
 end
