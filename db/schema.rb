@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20180602033446) do
     t.string "telefone"
     t.string "razao_social"
     t.string "cnpj"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "latitude"
     t.string "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.float "primeira_hora"
     t.float "hora"
     t.float "mensal"
@@ -67,14 +67,6 @@ ActiveRecord::Schema.define(version: 20180602033446) do
     t.string "placa"
     t.string "cpf"
     t.index ["user_id"], name: "index_normal_users_on_user_id"
-  end
-
-  create_table "parceiros", force: :cascade do |t|
-    t.string "nome"
-    t.string "cnpj"
-    t.string "telefone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "partners", force: :cascade do |t|
@@ -109,7 +101,6 @@ ActiveRecord::Schema.define(version: 20180602033446) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "cpf"
     t.date "birth"
     t.integer "tel"
     t.datetime "created_at", null: false
