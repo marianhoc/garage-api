@@ -3,6 +3,6 @@ class DonoEstacionamento < ApplicationRecord
 
 
 
-  has_many :estacionamentos
+  has_many :estacionamento
 
 end
