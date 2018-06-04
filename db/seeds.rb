@@ -60,7 +60,7 @@ Estacionamento.create(
             hora: 6.0,
             mensal: 30.0,
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id
+            dono_estacionamentos_id: DonoEstacionamento.first.id + 2 
             )
 
 Estacionamento.create(
@@ -75,7 +75,7 @@ Estacionamento.create(
             hora: 6.0,
             mensal: 30.0,
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id
+            dono_estacionamentos_id: DonoEstacionamento.first.id + 1
             )
 
 50.times do |index|
