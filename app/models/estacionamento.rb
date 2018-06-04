@@ -1,5 +1,5 @@
 class Estacionamento < ApplicationRecord
-    belongs_to :dono_estacionamentos, class_name: DonoEstacionamento
+    belongs_to :dono_estacionamentos, class_name: "DonoEstacionamento"
 
     has_many :reservations, dependent: :destroy
     has_many :vacancies, dependent: :destroy
