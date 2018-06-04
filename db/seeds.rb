@@ -11,7 +11,7 @@ User.destroy_all
   u = User.create(name: Faker::Name.name,
                   lastname: Faker::Name.last_name,
                   email: "#{index}@junior.com",
-                  tel: rand(11111 .. 99999),
+                  tel: rand(998000000 .. 999999999),
                   password: "123456",
                   password_confirmation: "123456"
               )
@@ -27,51 +27,71 @@ User.destroy_all
   end
 end
 
-
 Estacionamento.destroy_all
 
 e = Estacionamento.create(
             nome: "Campo de São Bento",
             endereco: Faker::Name.name,
-            telefone: rand(11111111 .. 99999999),
+            telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
-            cnpj: rand(11111111 .. 99999999),
+            cnpj:(11111111 .. 99999999),
             latitude: "-22.9042,",
             longitude: "-43.1074",
             primeira_hora: 5.0,
             hora: 6.0,
-            mensal: 30.0
+            mensal: 30.0,
+            aberto: true,
+            dono_estacionamentos_id: DonoEstacionamento.first.id
             )
 
 10.times do |t|
   e.vacancies.build.save
 end
 
-Estacionamento.create(nome: "Plaza Shopping", endereco: Faker::Name.name, telefone: rand(11111111 .. 99999999), razao_social: Faker::Name.name, cnpj: rand(11111111 .. 99999999), latitude: "-22.8969", longitude: "-43.1239", primeira_hora: 5.0, hora: 6.0, mensal: 30.0)
+Estacionamento.create(
+            nome: "Plaza Shopping",
+            endereco: Faker::Name.name,
+            telefone: rand(998000000 .. 999999999),
+            razao_social: Faker::Name.name,
+            cnpj:(11111111 .. 99999999),
+            latitude: "-22.8969",
+            longitude: "-43.1239",
+            primeira_hora: 5.0,
+            hora: 6.0,
+            mensal: 30.0,
+            aberto: true,
+            dono_estacionamentos_id: DonoEstacionamento.first.id
+            )
 
 Estacionamento.create(
             nome: "UFF",
             endereco: Faker::Name.name,
-            telefone: rand(11111111 .. 99999999),
+            telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
-            cnpj: rand(11111111 .. 99999999),
+            cnpj:(11111111 .. 99999999),
             latitude: "-22.9045",
             longitude: "-43.1329",
             primeira_hora: 5.0,
             hora: 6.0,
-            mensal: 30.0
+            mensal: 30.0,
+            aberto: true,
+            dono_estacionamentos_id: DonoEstacionamento.first.id
             )
 
-100.times do |index|
+50.times do |index|
   Estacionamento.create(nome: Faker::Name.name,
               endereco: Faker::Name.name,
-              telefone: rand(11111111 .. 99999999),
+              telefone:(998000000 .. 999999999),
               razao_social: Faker::Name.name,
-              cnpj: rand(11111111 .. 99999999),
+              cnpj:(11111111 .. 99999999),
               latitude: rand(-22.99 .. -21.00),
-              longitude: rand(1111 .. 99999),
+              longitude: rand(-43.10 .. -43.20),
               primeira_hora: 5.0,
               hora: 6.0,
-              mensal: 30.0
-              )
+              mensal: 30.0,
+              aberto: true,
+              dono_estacionamentos_id: DonoEstacionamento.first.id
+
+
+  )
   end

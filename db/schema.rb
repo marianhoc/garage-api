@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603193011) do
+ActiveRecord::Schema.define(version: 20180604034711) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 20180603193011) do
     t.float "primeira_hora"
     t.float "hora"
     t.float "mensal"
+    t.boolean "aberto"
+    t.integer "dono_estacionamentos_id"
+    t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"
   end
 
   create_table "lojas", force: :cascade do |t|

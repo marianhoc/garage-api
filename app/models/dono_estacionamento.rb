@@ -3,6 +3,6 @@ class DonoEstacionamento < ApplicationRecord
 
 
 
-  has_many :estacionamento
+  has_many :estacionamentos, foreign_key: "dono_estacionamentos_id",  dependent: :destroy
 
 end
