@@ -94,7 +94,7 @@ end
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999),
               latitude: rand(-22.99 .. -21.00),
-              longitude: rand(-43.10 .. -43.20),
+              longitude: rand(-43.20 .. -43.10),
               primeira_hora: 5.0,
               hora: 6.0,
               mensal: 30.0,
