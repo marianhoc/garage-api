@@ -20,11 +20,12 @@ User.destroy_all
   elsif index > 90
   u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
   else
-    u.build_normal_user(
+    n = u.build_normal_user(
       balance: index,
       cpf: rand(11111111111 .. 22222222222),
-      placa: rand(000 .. 999)).save
-    u.cars.build(cor: "Prata", placa: rand(0000..9999), modelo: Faker::Name.name, marca: Faker::Name.last_name).save
+      placa: rand(000 .. 999))
+    n.save
+    n.cars.build(cor: "Prata", placa: rand(0000..9999), modelo: Faker::Name.name, marca: Faker::Name.last_name).save
   end
 end
 
