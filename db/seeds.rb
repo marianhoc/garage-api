@@ -24,6 +24,7 @@ User.destroy_all
       balance: index,
       cpf: rand(11111111111 .. 22222222222),
       placa: rand(000 .. 999)).save
+    u.cars.build(cor: "Prata", placa: rand(0000..9999), modelo: Faker::Name.name, marca: Faker::Name.last_name).save
   end
 end
 
@@ -48,7 +49,7 @@ e = Estacionamento.create(
   e.vacancies.build.save
 end
 
-Estacionamento.create(
+e = Estacionamento.create(
             nome: "Plaza Shopping",
             endereco: Faker::Name.name,
             telefone: rand(998000000 .. 999999999),
@@ -63,7 +64,11 @@ Estacionamento.create(
             dono_estacionamentos_id: DonoEstacionamento.first.id + 2 
             )
 
-Estacionamento.create(
+10.times do |t|
+  e.vacancies.build.save
+end
+
+e = Estacionamento.create(
             nome: "UFF",
             endereco: Faker::Name.name,
             telefone: rand(998000000 .. 999999999),
@@ -78,8 +83,12 @@ Estacionamento.create(
             dono_estacionamentos_id: DonoEstacionamento.first.id + 1
             )
 
+10.times do |t|
+  e.vacancies.build.save
+end
+
 50.times do |index|
-  Estacionamento.create(nome: Faker::Name.name,
+  e = Estacionamento.create(nome: Faker::Name.name,
               endereco: Faker::Name.name,
               telefone: rand(998000000 .. 999999999),
               razao_social: Faker::Name.name,
@@ -94,4 +103,8 @@ Estacionamento.create(
 
 
   )
+
+  10.times do |t|
+    e.vacancies.build.save
+  end
   end
