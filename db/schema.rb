@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20180604034711) do
   create_table "reservations", force: :cascade do |t|
     t.integer "normal_user_id"
     t.integer "estacionamento_id"
+    t.integer "car_id"
     t.string "status"
     t.boolean "car_at_vacancy"
     t.datetime "programming_date"
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180604034711) do
     t.float "total_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_reservations_on_car_id"
     t.index ["estacionamento_id"], name: "index_reservations_on_estacionamento_id"
     t.index ["normal_user_id"], name: "index_reservations_on_normal_user_id"
   end
