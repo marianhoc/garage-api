@@ -1,6 +1,6 @@
 class EstacionamentoSerializer < ActiveModel::Serializer
   attributes :id, :nome, :endereco, :telefone, :razao_social,
-    :cnpj, :latitude, :longitude, :primeira_hora, :mensal, :hora,
+    :cnpj, :latitude, :longitude, :primeira_hora, :mensal, :hora, :aberto,
     :created_at, :updated_at
 
   belongs_to :dono_estacionamentos, class_name: "DonoEstacionamento"
