@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :dono_estacionamentos
 
   resources :reservations
-  get 'reservations/normal_user', to: 'reservations#normal_user_reservations'
+  get 'reservations/normal_user/:normal_user_id', to: 'reservations#normal_user_reservations'
 
   resources :vacancies
   post 'store_owners/add_credits', to: 'store_owners#add_credit'
