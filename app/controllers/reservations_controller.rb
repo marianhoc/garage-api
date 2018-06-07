@@ -15,7 +15,10 @@ class ReservationsController < ApplicationController
 
   # POST /reservations
   def create
+    car = Car.find(reservation_params[:placa])
+    reservation_params.delete(:placa)
     @reservation = Reservation.new(reservation_params)
+    @reservation.car_id = car.id
 
     if @reservation.save
       render json: @reservation, status: :created, location: @reservation
