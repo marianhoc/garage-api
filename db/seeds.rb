@@ -37,7 +37,7 @@ e = Estacionamento.create(
             telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
-            latitude: "-22.9042,",
+            latitude: "-22.9042",
             longitude: "-43.1074",
             primeira_hora: 5.0,
             hora: 6.0,

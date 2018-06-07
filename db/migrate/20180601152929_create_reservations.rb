@@ -9,6 +9,8 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.time :time_at_vacancy
       t.float :tax_value
       t.float :total_value
+      t.string :payment
+      t.boolean :creditos_pare_mais
 
       t.timestamps
     end

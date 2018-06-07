@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180605174237) do
     t.string "placa"
     t.string "modelo"
     t.string "marca"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["normal_user_id"], name: "index_cars_on_normal_user_id"
@@ -55,10 +56,10 @@ ActiveRecord::Schema.define(version: 20180605174237) do
     t.string "telefone"
     t.string "razao_social"
     t.string "cnpj"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "latitude"
     t.string "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.float "primeira_hora"
     t.float "hora"
     t.float "mensal"
@@ -89,14 +90,6 @@ ActiveRecord::Schema.define(version: 20180605174237) do
     t.index ["user_id"], name: "index_normal_users_on_user_id"
   end
 
-  create_table "parceiros", force: :cascade do |t|
-    t.string "nome"
-    t.string "cnpj"
-    t.string "telefone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "partners", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -113,6 +106,8 @@ ActiveRecord::Schema.define(version: 20180605174237) do
     t.time "time_at_vacancy"
     t.float "tax_value"
     t.float "total_value"
+    t.string "payment"
+    t.boolean "creditos_pare_mais"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "car_id"
@@ -131,7 +126,6 @@ ActiveRecord::Schema.define(version: 20180605174237) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "cpf"
     t.date "birth"
     t.integer "tel"
     t.datetime "created_at", null: false
