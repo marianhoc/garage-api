@@ -8,6 +8,12 @@ class ReservationsController < ApplicationController
     render json: @reservations
   end
 
+  def normal_user_reservations
+    @reservations = Reservation.where(normal_user_id: params[:normal_user_id])
+
+    render json: @reservations
+  end
+
   # GET /reservations/1
   def show
     render json: @reservation
