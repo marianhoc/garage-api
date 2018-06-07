@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
 
   # POST /reservations
   def create
-    car = Car.find(params[:placa])
+    car = Car.find_by(placa: params[:placa])
     reservation_params.delete(:placa)
     @reservation = Reservation.new(reservation_params)
     @reservation.car_id = car.id
