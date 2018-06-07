@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
     reservation_params.delete(:placa)
     @reservation = Reservation.new(reservation_params)
     @reservation.car_id = car.id
-
+    @reservation.programming_date = Time.zone.now if !reservation_params[:programming_date]
     if @reservation.save
       render json: @reservation, status: :created, location: @reservation
     else
@@ -35,6 +35,9 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /reservations/1
   def update
+    car = Car.find_by(placa: params[:placa])
+    reservation_params.delete(:placa)
+    @reservation.car_id = car.id
     if @reservation.update(reservation_params)
       render json: @reservation
     else
