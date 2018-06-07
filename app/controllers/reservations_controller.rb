@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
     reservation_params.delete(:placa)
     @reservation = Reservation.new(reservation_params)
     @reservation.car_id = car.id
-    @reservation.programming_date = Time.zone.now if !reservation_params[:programming_date]
+    @reservation.programming_date = Time.zone.now if !reservation_params[:programming_date] || reservation_params[:programming_date] == ""
     if @reservation.save
       render json: @reservation, status: :created, location: @reservation
     else
@@ -58,6 +58,13 @@ class ReservationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def reservation_params
-      params.require(:reservation).permit(:normal_user_id, :placa, :estacionamento_id, :payment, :creditos_pare_mais)
+      params.require(:reservation)
+        .permit(
+          :normal_user_id, 
+          :placa, 
+          :estacionamento_id, 
+          :payment, 
+          :creditos_pare_mais,
+          :programming_date)
     end
 end
