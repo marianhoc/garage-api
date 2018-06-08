@@ -65,6 +65,7 @@ class ReservationsController < ApplicationController
           :estacionamento_id, 
           :payment, 
           :creditos_pare_mais,
-          :programming_date)
+          :programming_date,
+          :expected_time_at_vacancy)
     end
 end
