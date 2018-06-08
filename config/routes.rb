@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :dono_estacionamentos
 
   get 'reservations/normal_user/:normal_user_id', to: 'reservations#normal_user_reservations'
-  get 'reservations/estacionamento/:estacionamento_id', to: 'reservations#estacionamento_reservations'
+  get 'reservations/estacionamento/:operador_estacionamento_id', to: 'reservations#estacionamento_reservations'
   resources :reservations
 
   resources :vacancies

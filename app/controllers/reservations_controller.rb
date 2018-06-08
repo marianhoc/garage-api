@@ -15,7 +15,8 @@ class ReservationsController < ApplicationController
   end
 
   def estacionamento_reservations
-    @reservations = Reservation.where(estacionamento_id: params[:estacionamento_id])
+    estacionamento = Estacionamento.where(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]))
+    @reservations = Reservation.where(estacionamento_id: estacionamento.id)
 
     render json: @reservations
   end
