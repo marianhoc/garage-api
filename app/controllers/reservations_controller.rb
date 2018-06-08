@@ -26,8 +26,9 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     puts reservation_params
     @reservation.car_id = car.id
-    @reservation.programming_date = Time.zone.now if !reservation_params[:programming_date] || reservation_params[:programming_date] == ""
+    @reservation.programming_date_begin = Time.zone.now if !reservation_params[:programming_date] || reservation_params[:programming_date] == ""
     if @reservation.save
+      @reservation.set_programming_date_end()
       render json: @reservation, status: :created, location: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
@@ -66,7 +67,8 @@ class ReservationsController < ApplicationController
           :estacionamento_id, 
           :payment, 
           :creditos_pare_mais,
-          :programming_date,
+          :programming_date_begin,
+          :programming_date_end,
           :expected_time_at_vacancy)
     end
 end
