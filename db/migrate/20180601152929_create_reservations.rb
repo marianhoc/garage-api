@@ -6,8 +6,8 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.string :status
       t.boolean :car_at_vacancy
       t.datetime :programming_date
-      t.time :expected_time_at_vacancy
-      t.time :real_time_at_vacancy
+      t.integer :expected_time_at_vacancy
+      t.integer :real_time_at_vacancy
       t.float :tax_value
       t.float :total_value
       t.string :payment
