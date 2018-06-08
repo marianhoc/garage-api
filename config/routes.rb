@@ -24,8 +24,9 @@ Rails.application.routes.draw do
   post "normal_users/:normal_user_id/newcartao", to: 'normal_users#save_cartao'
   delete "normal_users/:normal_user_id/deletecartao/:id", to: 'normal_users#destroy_cartao'
 
-
+  get "estacionamentos/operador/:operador_estacionamento_id", to: 'estacionamentos#index_operador'
   resources :estacionamentos
+
   devise_for :users, :controllers => { 
              :registrations => 'user_registration' }
   resources :users
