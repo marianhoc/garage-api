@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180605174237) do
+ActiveRecord::Schema.define(version: 20180608153844) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(version: 20180605174237) do
     t.string "placa"
     t.string "cpf"
     t.index ["user_id"], name: "index_normal_users_on_user_id"
+  end
+
+  create_table "operador_estacionamentos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "estacionamento_id"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estacionamento_id"], name: "index_operador_estacionamentos_on_estacionamento_id"
+    t.index ["user_id"], name: "index_operador_estacionamentos_on_user_id"
   end
 
   create_table "partners", force: :cascade do |t|

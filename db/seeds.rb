@@ -18,7 +18,7 @@ User.destroy_all
   if ((index > 50) and (index < 90))
     u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
   elsif index > 90
-  u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
+    u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
   else
     n = u.build_normal_user(
       balance: index,
@@ -108,4 +108,15 @@ end
   10.times do |t|
     e.vacancies.build.save
   end
+  end
+
+  3.times do |index|
+    u = User.create(name: Faker::Name.name,
+                    lastname: Faker::Name.last_name,
+                    email: "#{(100+index)}@junior.com",
+                    tel: rand(998000000 .. 999999999),
+                    password: "123456",
+                    password_confirmation: "123456"
+                )
+    u.build_operador_estacionamento(estacionamento_id: 1, cpf: rand(22222222222 .. 88888888888)).save
   end
