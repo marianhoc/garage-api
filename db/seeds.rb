@@ -29,6 +29,9 @@ User.destroy_all
   end
 end
 
+dono = DonoEstacionamento.first
+dono.user.update_attribute(:email, "dono.estacionamento@email.com")
+
 Estacionamento.destroy_all
 
 e = Estacionamento.create(
