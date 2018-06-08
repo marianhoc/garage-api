@@ -14,6 +14,12 @@ class ReservationsController < ApplicationController
     render json: @reservations
   end
 
+  def estacionamento_reservations
+    @reservations = Reservation.where(estacionamento_id: params[:estacionamento_id])
+
+    render json: @reservations
+  end
+
   # GET /reservations/1
   def show
     render json: @reservation
