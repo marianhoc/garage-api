@@ -2,8 +2,8 @@ class EstacionamentosController < ApplicationController
   before_action :set_estacionamento, only: [:show, :update, :destroy]
 
   def index_operador
-    @estacionamentos = Estacionamentos
-      .where(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]).id)
+    @estacionamentos = Estacionamento.where(
+      id: OperadorEstacionamento.find(params[:operador_estacionamento_id]).id)
 
     render json: @estacionamentos
   end
