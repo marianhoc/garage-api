@@ -24,7 +24,6 @@ class ReservationsController < ApplicationController
     car = Car.find_by(placa: params[:placa])
     reservation_params.delete(:placa)
     @reservation = Reservation.new(reservation_params)
-    puts reservation_params
     @reservation.car_id = car.id
     @reservation.programming_date_begin = Time.zone.now if !reservation_params[:programming_date] || reservation_params[:programming_date] == ""
     if @reservation.save
