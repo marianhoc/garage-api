@@ -6,6 +6,5 @@ class Reservation < ApplicationRecord
   def set_programming_date_end
     self.programming_date_end = 
       self.programming_date_begin + self.expected_time_at_vacancy.hours
-    self.save
   end
 end

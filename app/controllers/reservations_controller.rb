@@ -30,11 +30,38 @@ class ReservationsController < ApplicationController
   def create
     car = Car.find_by(placa: params[:placa])
     reservation_params.delete(:placa)
+
+    reservation_day = ""
+    reservation_month = ""
+    reservation_hour = ""
+    reservation_minute = ""
+    programming_reservation = false
+
+    if params[:expected_entry_time_at_vacancy] && params[:expected_entry_time_at_vacancy] != ""
+      reservation_hour = params[:expected_entry_time_at_vacancy][:hour]
+      reservation_minute = params[:expected_entry_time_at_vacancy][:minute]
+      if params[:day] && params[:day] != ""
+        reservation_day = params[:day]
+        reservation_month = params[:month]
+        programming_reservation = true
+      end
+    end
+
     @reservation = Reservation.new(reservation_params)
     @reservation.car_id = car.id
-    @reservation.programming_date_begin = Time.zone.now if !reservation_params[:programming_date] || reservation_params[:programming_date] == ""
+
+    if programming_reservation
+      @reservation.programming_date_begin = DateTime.new(
+        Time.now.year, reservation_month.to_i, 
+        reservation_day.to_i, reservation_hour.to_i,
+        reservation_minute.to_i, 0)
+    else
+      @reservation.programming_date_begin = DateTime.now
+    end
+
+    @reservation.set_programming_date_end()
+
     if @reservation.save
-      @reservation.set_programming_date_end()
       render json: @reservation, status: :created, location: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
@@ -46,7 +73,39 @@ class ReservationsController < ApplicationController
     car = Car.find_by(placa: params[:placa])
     reservation_params.delete(:placa)
     @reservation.car_id = car.id
+    
     if @reservation.update(reservation_params)
+      reservation_day = ""
+      reservation_month = ""
+      reservation_hour = ""
+      reservation_minute = ""
+      programming_reservation = false
+
+      if params[:expected_entry_time_at_vacancy] && params[:expected_entry_time_at_vacancy] != ""
+        reservation_hour = params[:expected_entry_time_at_vacancy][:hour]
+        reservation_minute = params[:expected_entry_time_at_vacancy][:minute]
+        if params[:day] && params[:day] != ""
+          reservation_day = params[:day]
+          reservation_month = params[:month]
+          programming_reservation = true
+        end
+      end
+
+      @reservation = Reservation.new(reservation_params)
+      @reservation.car_id = car.id
+
+      if programming_reservation
+        @reservation.programming_date_begin = DateTime.new(
+          Time.now.year, reservation_month.to_i, 
+          reservation_day.to_i, reservation_hour.to_i,
+          reservation_minute.to_i, 0)
+      else
+        @reservation.programming_date_begin = DateTime.now
+      end
+
+      @reservation.set_programming_date_end()
+      @reservation.save
+      
       render json: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
