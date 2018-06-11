@@ -45,8 +45,7 @@ e = Estacionamento.create(
             primeira_hora: rand(5.00 .. 10.00),
             hora: rand(6.00 .. 11.00),
             mensal: rand(30.00 .. 60.00),
-            valor_vaga: rand(10.00 .. 20.00),
-            taxa_reserva: rand(2.00 .. 5.00),
+            taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
             dono_estacionamentos_id: DonoEstacionamento.first.id
             )
@@ -63,11 +62,12 @@ e = Estacionamento.create(
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.8969",
             longitude: "-43.1239",
-            primeira_hora: 5.0,
-            hora: 6.0,
-            mensal: 30.0,
+            primeira_hora: rand(5.00 .. 10.00),
+            hora: rand(6.00 .. 11.00),
+            mensal: rand(30.00 .. 60.00),
+            taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id + 2 
+            dono_estacionamentos_id: DonoEstacionamento.first.id + 2
             )
 
 10.times do |t|
@@ -82,9 +82,10 @@ e = Estacionamento.create(
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.9045",
             longitude: "-43.1329",
-            primeira_hora: 5.0,
-            hora: 6.0,
-            mensal: 30.0,
+            primeira_hora: rand(5.00 .. 10.00),
+            hora: rand(6.00 .. 11.00),
+            mensal: rand(30.00 .. 60.00),
+            taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
             dono_estacionamentos_id: DonoEstacionamento.first.id + 1
             )
@@ -101,9 +102,10 @@ end
               cnpj: rand(11111111 .. 99999999),
               latitude: rand(-22.99 .. -21.00),
               longitude: rand(-43.20 .. -43.10),
-              primeira_hora: 5.0,
-              hora: 6.0,
-              mensal: 30.0,
+              primeira_hora: rand(5.00 .. 10.00),
+              hora: rand(6.00 .. 11.00),
+              mensal: rand(30.00 .. 60.00),
+              taxa_reserva: rand(10.00 .. 20.00),
               aberto: true,
               dono_estacionamentos_id: DonoEstacionamento.first.id
 
