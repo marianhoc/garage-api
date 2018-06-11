@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20180608153844) do
     t.decimal "primeira_hora", precision: 15, scale: 3
     t.decimal "hora", precision: 15, scale: 3
     t.decimal "mensal", precision: 15, scale: 3
-    t.decimal "valor_vaga", precision: 15, scale: 3
     t.decimal "taxa_reserva", precision: 15, scale: 3
     t.boolean "aberto"
     t.integer "dono_estacionamentos_id"
