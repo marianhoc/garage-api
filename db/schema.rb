@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 20180608153844) do
     t.string "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "primeira_hora"
-    t.float "hora"
-    t.float "mensal"
+    t.decimal "primeira_hora", precision: 15, scale: 3
+    t.decimal "hora", precision: 15, scale: 3
+    t.decimal "mensal", precision: 15, scale: 3
+    t.decimal "valor_vaga", precision: 15, scale: 3
+    t.decimal "taxa_reserva", precision: 15, scale: 3
     t.boolean "aberto"
     t.integer "dono_estacionamentos_id"
     t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"

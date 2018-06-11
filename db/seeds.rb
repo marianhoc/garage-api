@@ -42,9 +42,11 @@ e = Estacionamento.create(
             cnpj: rand(11111111 .. 99999999),
             latitude: "-22.9042",
             longitude: "-43.1074",
-            primeira_hora: 5.0,
-            hora: 6.0,
-            mensal: 30.0,
+            primeira_hora: rand(5.00 .. 10.00),
+            hora: rand(6.00 .. 11.00),
+            mensal: rand(30.00 .. 60.00),
+            valor_vaga: rand(10.00 .. 20.00),
+            taxa_reserva: rand(2.00 .. 5.00),
             aberto: true,
             dono_estacionamentos_id: DonoEstacionamento.first.id
             )
