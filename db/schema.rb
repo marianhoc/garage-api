@@ -117,10 +117,12 @@ ActiveRecord::Schema.define(version: 20180608153844) do
     t.datetime "programming_date_end"
     t.integer "expected_time_at_vacancy"
     t.integer "real_time_at_vacancy"
-    t.float "tax_value"
-    t.float "total_value"
+    t.decimal "total_value", precision: 15, scale: 3
     t.string "payment"
     t.boolean "creditos_pare_mais"
+    t.decimal "estacionamento_hora", precision: 15, scale: 3
+    t.decimal "estacionamento_primeira_hora", precision: 15, scale: 3
+    t.decimal "estacionamento_taxa", precision: 15, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "car_id"
