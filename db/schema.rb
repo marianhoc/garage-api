@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180608153844) do
+ActiveRecord::Schema.define(version: 20180612145536) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -99,6 +99,16 @@ ActiveRecord::Schema.define(version: 20180608153844) do
     t.datetime "updated_at", null: false
     t.index ["estacionamento_id"], name: "index_operador_estacionamentos_on_estacionamento_id"
     t.index ["user_id"], name: "index_operador_estacionamentos_on_user_id"
+  end
+
+  create_table "operador_lojas", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "loja_id"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loja_id"], name: "index_operador_lojas_on_loja_id"
+    t.index ["user_id"], name: "index_operador_lojas_on_user_id"
   end
 
   create_table "partners", force: :cascade do |t|

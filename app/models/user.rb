@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_one :dono_estacionamento, dependent: :destroy
   has_one :normal_user, dependent: :destroy
   has_one :operador_estacionamento, dependent: :destroy
+  has_one :operador_loja, dependent: :destroy
+
 
   def parceiro?
     return true if self.partner

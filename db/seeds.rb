@@ -15,8 +15,19 @@ User.destroy_all
                   password: "123456",
                   password_confirmation: "123456"
               )
-  if ((index > 50) and (index < 90))
+
+  if ((index > 40) and (index < 70))
     u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
+    Loja.create(
+              nome: "nome de test no seed",
+              endereco: " agora não tenho criatividade",
+              latitude: rand(-22.99 .. -21.00),
+              longitude: rand(-43.31 .. -43.11),
+              cnpj: "1000987654",
+              store_owner_id: index
+      )
+  elsif ((index > 71) and (index < 90))
+    u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: index - 71).save
   elsif index > 90
     u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
   else
@@ -128,5 +139,5 @@ end
     u.build_operador_estacionamento(estacionamento_id: 1, cpf: rand(22222222222 .. 88888888888)).save
   end
 
-  operador = OperadorEstacionamento.first
-  operador.user.update_attribute(:email, "operador.estacionamento1@email.com")
+  # operador = OperadorEstacionamento.first
+  # operador.user.update_attribute(:email, "operador.estacionamento1@email.com")

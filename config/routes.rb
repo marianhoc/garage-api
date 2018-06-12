@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :operador_lojas
   resources :operador_estacionamentos
   resources :cards
   resources :dono_estacionamentos
