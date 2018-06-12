@@ -9,10 +9,12 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.datetime :programming_date_end
       t.integer :expected_time_at_vacancy
       t.integer :real_time_at_vacancy
-      t.float :tax_value
-      t.float :total_value
+      t.decimal :total_value, precision: 15, scale: 3
       t.string :payment
       t.boolean :creditos_pare_mais
+      t.decimal :estacionamento_hora, precision: 15, scale: 3
+      t.decimal :estacionamento_primeira_hora, precision: 15, scale: 3
+      t.decimal :estacionamento_taxa, precision: 15, scale: 3
 
       t.timestamps
     end

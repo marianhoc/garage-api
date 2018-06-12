@@ -134,6 +134,10 @@ class ReservationsController < ApplicationController
           :creditos_pare_mais,
           :programming_date_begin,
           :programming_date_end,
-          :expected_time_at_vacancy)
+          :expected_time_at_vacancy,
+          :total_value,
+          :estacionamento_taxa,
+          :estacionamento_primeira_hora,
+          :estacionamento_hora)
     end
 end
