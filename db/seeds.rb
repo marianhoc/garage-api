@@ -24,7 +24,7 @@ User.destroy_all
               latitude: rand(-22.99 .. -21.00),
               longitude: rand(-43.31 .. -43.11),
               cnpj: "1000987654",
-              store_owner_id: index
+              store_owner_id: StoreOwner.last.id
       )
   elsif ((index > 71) and (index < 90))
     u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: index - 71).save
