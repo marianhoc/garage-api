@@ -19,7 +19,7 @@ User.destroy_all
   if ((index > 40) and (index < 70))
     u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
     Loja.create(
-              nome: Faker::WorldCup.team,
+              nome: Faker::Artist,
               endereco: Faker::Address,
               latitude: rand(-22.99 .. -21.00),
               longitude: rand(-43.31 .. -43.11),
