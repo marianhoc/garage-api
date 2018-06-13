@@ -139,5 +139,5 @@ end
     u.build_operador_estacionamento(estacionamento_id: 1, cpf: rand(22222222222 .. 88888888888)).save
   end
 
-  # operador = OperadorEstacionamento.first
-  # operador.user.update_attribute(:email, "operador.estacionamento1@email.com")
+  operador = OperadorEstacionamento.first
+  operador.user.update_attribute(:email, "operador.estacionamento1@email.com")
