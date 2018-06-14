@@ -14,6 +14,18 @@ class ReservationsController < ApplicationController
     render json: @reservations
   end
 
+  def estacionamento_reservations_today
+    estacionamento = Estacionamento.find_by(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]))
+    initial_date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, 00, 00, 00)
+    final_date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, 23, 59, 59)
+
+    @reservations = Reservation
+          .where("programming_date_begin > ?", initial_date)
+          .where("programming_date_begin < ?", final_date)
+
+    render json: @reservations
+  end
+
   def estacionamento_reservations
     estacionamento = Estacionamento.find_by(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]))
     @reservations = Reservation.where(estacionamento_id: estacionamento.id)
