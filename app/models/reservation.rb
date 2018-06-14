@@ -5,6 +5,8 @@ class Reservation < ApplicationRecord
 
   has_one :vacancy, dependent: :nullify
 
+  enum status: [:pendente, :ocupado, :atrasado, :cancelado, :confirmado]
+
   def set_programming_date_end
     self.programming_date_end = 
       self.programming_date_begin + self.expected_time_at_vacancy.hours
