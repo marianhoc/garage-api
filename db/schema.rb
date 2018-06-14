@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180612145536) do
+ActiveRecord::Schema.define(version: 20180614032055) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -174,9 +174,9 @@ ActiveRecord::Schema.define(version: 20180612145536) do
 
   create_table "vacancies", force: :cascade do |t|
     t.integer "estacionamento_id"
-    t.integer "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reservation_id"
     t.index ["estacionamento_id"], name: "index_vacancies_on_estacionamento_id"
     t.index ["reservation_id"], name: "index_vacancies_on_reservation_id"
   end
