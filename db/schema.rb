@@ -174,11 +174,11 @@ ActiveRecord::Schema.define(version: 20180612145536) do
 
   create_table "vacancies", force: :cascade do |t|
     t.integer "estacionamento_id"
-    t.integer "normal_user_id"
+    t.integer "reservation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["estacionamento_id"], name: "index_vacancies_on_estacionamento_id"
-    t.index ["normal_user_id"], name: "index_vacancies_on_normal_user_id"
+    t.index ["reservation_id"], name: "index_vacancies_on_reservation_id"
   end
 
 end

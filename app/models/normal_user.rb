@@ -2,7 +2,6 @@ class NormalUser < ApplicationRecord
   belongs_to :user
 
   has_many :credits, dependent: :destroy
-  has_many :vacancies, dependent: :nullify
   has_many :reservations, dependent: :destroy
   has_many :cars, dependent: :destroy
   has_many :cards, dependent: :destroy

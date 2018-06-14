@@ -10,4 +10,5 @@ class ReservationSerializer < ActiveModel::Serializer
   belongs_to :normal_user
   belongs_to :estacionamento
   belongs_to :car
+  has_one :vacancy
 end
