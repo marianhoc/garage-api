@@ -8,6 +8,12 @@ class VacanciesController < ApplicationController
     render json: @vacancies
   end
 
+  def index_estacionamento
+    @vacancies = Vacancy.where(estacionamento_id: params[:estacionamento_id])
+
+    render json: @vacancies
+  end
+
   # GET /vacancies/1
   def show
     render json: @vacancy

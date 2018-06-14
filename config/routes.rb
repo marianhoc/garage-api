@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   get 'reservations/estacionamento/:operador_estacionamento_id', to: 'reservations#estacionamento_reservations'
   resources :reservations
 
+  get 'vacancies/estacionamento/:estacionamento_id', to: 'vacancies#index_estacionamento'
   resources :vacancies
+  
   post 'store_owners/add_credits', to: 'store_owners#add_credit'
   resources :store_owners
+  
   resources :lojas
   resources :normal_users
 
