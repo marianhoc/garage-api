@@ -18,6 +18,7 @@ User.destroy_all
 
   if ((index > 40) and (index < 70))
     u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
+    u.update_attribute(:email, "donoloja#{index}@email.com")
     Loja.create(
               nome: Faker::Artist,
               endereco: Faker::Address,
@@ -28,20 +29,20 @@ User.destroy_all
       )
   elsif ((index > 71) and (index < 90))
     u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: (index - 71)).save
+    u.update_attribute(:email, "operadorloja#{index}@email.com")
   elsif index > 90
     u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
+    u.update_attribute(:email, "donoestacionamento#{index}@email.com")
   else
     n = u.build_normal_user(
       balance: index,
       cpf: rand(11111111111 .. 22222222222),
       placa: rand(000 .. 999))
     n.save
+    n.user.update_attribute(:email, "usuario#{index}@email.com")
     n.cars.build(cor: "Prata", placa: rand(0000..9999), modelo: Faker::Name.name, marca: Faker::Name.last_name).save
   end
 end
-
-dono = DonoEstacionamento.first
-dono.user.update_attribute(:email, "dono.estacionamento@email.com")
 
 Estacionamento.destroy_all
 
@@ -137,7 +138,5 @@ end
                     password_confirmation: "123456"
                 )
     u.build_operador_estacionamento(estacionamento_id: 1, cpf: rand(22222222222 .. 88888888888)).save
+    u.update_attribute(:email, "operador#{index}@email.com")
   end
-
-  operador = OperadorEstacionamento.first
-  operador.user.update_attribute(:email, "operador.estacionamento1@email.com")
