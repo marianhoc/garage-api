@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
     @reservations = Reservation
           .where("programming_date_begin > ?", initial_date)
           .where("programming_date_begin < ?", final_date)
+          .order(programming_date_begin: :asc)
 
     render json: @reservations
   end
