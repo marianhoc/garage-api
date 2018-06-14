@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614161322) do
+ActiveRecord::Schema.define(version: 20180614225656) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "normal_user_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180614161322) do
     t.decimal "taxa_reserva", precision: 15, scale: 3
     t.boolean "aberto"
     t.integer "dono_estacionamentos_id"
+    t.integer "vagas_ativas", default: 10
     t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"
   end
 
