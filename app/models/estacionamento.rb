@@ -16,4 +16,10 @@ class Estacionamento < ApplicationRecord
         self.vagas_ocupadas += 1
         self.save
     end
+
+    def diminui_vagas_ocupadas()
+        self.vagas_ativas += 1
+        self.vagas_ocupadas -= 1
+        self.save
+    end
 end

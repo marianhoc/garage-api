@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'reservations/today/:operador_estacionamento_id', to: 'reservations#estacionamento_reservations_today'
   get 'reservations/confirm/:reservation_id/:operador_estacionamento_id', to: 'reservations#confirm_reservation'
   put 'reservations/checkin', to: 'reservations#checkin'
+  put 'reservations/deny', to: 'reservations#deny_reservation'
+  put 'reservations/checkout', to: 'reservations#checkout'
   resources :reservations
 
   get 'vacancies/estacionamento/:estacionamento_id', to: 'vacancies#index_estacionamento'

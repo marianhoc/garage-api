@@ -16,12 +16,14 @@ class ReservationsController < ApplicationController
 
   def estacionamento_reservations_today
     estacionamento = Estacionamento.find_by(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]))
-    initial_date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, 00, 00, 00)
-    final_date = DateTime.new(Date.today.year, Date.today.month, Date.today.day, 23, 59, 59)
+    initial_date = Time.new(Time.zone.now.year, Time.zone.now.month, Time.zone.now.day, 00, 00, 00).to_datetime
+    final_date = Time.new(Time.zone.now.year, Time.zone.now.month, Time.zone.now.day, 23, 59, 59).to_datetime
 
     @reservations = Reservation
           .where("programming_date_begin > ?", initial_date)
           .where("programming_date_begin < ?", final_date)
+          .where.not(status: :checkout)
+          .where.not(status: :cancelado)
           .order(programming_date_begin: :asc)
 
     render json: @reservations
@@ -44,6 +46,20 @@ class ReservationsController < ApplicationController
   def confirm_reservation
     @reservation = Reservation.find(params[:reservation_id])
     @reservation.change_status(:confirmado)
+
+    render json: @reservation
+  end
+
+  def deny_reservation
+    @reservation = Reservation.find(params[:id])
+    @reservation.change_status(:cancelado)
+
+    render json: @reservation
+  end
+
+  def checkout
+    @reservation = Reservation.find(params[:id])
+    @reservation.checkout()
 
     render json: @reservation
   end

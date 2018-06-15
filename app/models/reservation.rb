@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
 
   has_one :vacancy, dependent: :nullify
 
-  enum status: [:pendente, :ocupado, :atrasado, :cancelado, :confirmado]
+  enum status: [:pendente, :ocupado, :atrasado, :cancelado, :confirmado, :checkout]
 
   def set_programming_date_end
     self.programming_date_end = 
@@ -25,9 +25,24 @@ class Reservation < ApplicationRecord
       else
         errors[:base] << "Estacionamento cheio"
       end
+    elsif status == :cancelado
+      if self.status == :pendente
+        self.update_attribute(:status, status)
+      else
+        v = self.vacancy
+        if v && v.update_attribute(:reservation_id, nil)
+          self.estacionamento.diminui_vagas_ocupadas()
+        end
+        self.update_attribute(:status, status)
+      end
     else
       return false
     end
+  end
 
+  def checkout
+    self.vacancy.update_attribute(:reservation_id, nil)
+    self.estacionamento.diminui_vagas_ocupadas()
+    self.update_attribute(:status, :checkout)
   end
 end
