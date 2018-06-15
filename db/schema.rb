@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180614225656) do
     t.boolean "aberto"
     t.integer "dono_estacionamentos_id"
     t.integer "vagas_ativas", default: 10
+    t.integer "vagas_ocupadas", default: 0
     t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"
   end
 

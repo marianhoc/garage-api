@@ -27,11 +27,25 @@ class ReservationsController < ApplicationController
     render json: @reservations
   end
 
+  def checkin
+    @reservation = Reservation.find(params[:id])
+    @reservation.change_status(:ocupado)
+
+    render json: @reservation
+  end
+
   def estacionamento_reservations
     estacionamento = Estacionamento.find_by(id: OperadorEstacionamento.find(params[:operador_estacionamento_id]))
     @reservations = Reservation.where(estacionamento_id: estacionamento.id)
 
     render json: @reservations
+  end
+
+  def confirm_reservation
+    @reservation = Reservation.find(params[:reservation_id])
+    @reservation.change_status(:confirmado)
+
+    render json: @reservation
   end
 
   # GET /reservations/1

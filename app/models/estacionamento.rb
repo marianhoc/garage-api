@@ -10,4 +10,10 @@ class Estacionamento < ApplicationRecord
     validates :telefone, presence: true, length: { in: 6..20 }, numericality: true, uniqueness: true
     validates :razao_social, presence: true, length: { in: 2..255 }
     validates :cnpj, presence: true, length: { in: 5..50 }, uniqueness: true
+
+    def aumenta_vagas_ocupadas()
+        self.vagas_ativas -= 1
+        self.vagas_ocupadas += 1
+        self.save
+    end
 end
