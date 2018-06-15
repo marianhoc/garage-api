@@ -20,8 +20,8 @@ User.destroy_all
     u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
     u.update_attribute(:email, "donoloja#{index}@email.com")
     Loja.create(
-              nome: Faker::Artist,
-              endereco: Faker::Address,
+              nome: Faker::Address.community,
+              endereco: Faker::Address.street_address,
               latitude: rand(-22.99 .. -21.00),
               longitude: rand(-43.31 .. -43.11),
               cnpj: "1000987654",
@@ -107,8 +107,9 @@ e = Estacionamento.create(
 end
 
 50.times do |index|
-  e = Estacionamento.create(nome: Faker::Name.name,
-              endereco: Faker::Name.name,
+  e = Estacionamento.create(
+              nome: Faker::Address.community,
+              endereco: Faker::Address.street_address,
               telefone: rand(998000000 .. 999999999),
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999),
