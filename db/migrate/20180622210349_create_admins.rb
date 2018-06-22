@@ -1,6 +1,6 @@
-class CreatePartners < ActiveRecord::Migration[5.1]
+class CreateAdmins < ActiveRecord::Migration[5.1]
   def change
-    create_table :partners do |t|
+    create_table :admins do |t|
       t.references :user, foreign_key: true
 
       t.timestamps

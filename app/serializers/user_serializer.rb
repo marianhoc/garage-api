@@ -6,4 +6,5 @@ class UserSerializer < ActiveModel::Serializer
   has_one :dono_estacionamento
   has_one :operador_estacionamento
   has_one :operador_loja
+  has_one :admin
 end

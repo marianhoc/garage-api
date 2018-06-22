@@ -7,45 +7,138 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-100.times do |index|
+Estacionamento.destroy_all
+Loja.destroy_all
+
+#Criando admin
+1.times do |i|
+  u = User.create(
+    name: "Anderson",
+    lastname: "Rocha",
+    email: "admin@email.com",
+    tel: rand(998000000 .. 999999999),
+    password: "123456",
+    password_confirmation: "123456"
+  )
+  u.build_admin().save
+end
+
+#Criando usuários normais
+100.times do |i|
+  u = User.create(
+    name: Faker::Name.name,
+    lastname: Faker::Name.last_name,
+    email: "usuario#{i}@email.com",
+    tel: rand(998000000 .. 999999999),
+    password: "123456",
+    password_confirmation: "123456"
+  )
+
+  n = u.build_normal_user(balance: 50, cpf: rand(11111111111 .. 22222222222))
+  n.save
+  n.cars.build(
+    cor: Faker::Color.color_name, 
+    placa: "INJ-"+rand(0000..9999).to_s, 
+    modelo: "Clio", 
+    marca: "Renault",
+  ).save
+end
+
+#Criando Donos e respectivos estacionamentos
+50.times do |index|
   u = User.create(name: Faker::Name.name,
                   lastname: Faker::Name.last_name,
-                  email: "#{index}@junior.com",
+                  email: "donoest#{index}@email.com",
+                  tel: rand(998000000 .. 999999999),
+                  password: "123456",
+                  password_confirmation: "123456")
+
+  u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
+
+  e = Estacionamento.create(
+              nome: Faker::Address.community,
+              endereco: Faker::Address.street_address,
+              telefone: rand(998000000 .. 999999999),
+              razao_social: Faker::Name.name,
+              cnpj: rand(11111111 .. 99999999),
+              latitude: rand(-22.99 .. -21.00),
+              longitude: rand(-43.20 .. -43.10),
+              primeira_hora: rand(5.00 .. 10.00),
+              hora: rand(6.00 .. 11.00),
+              mensal: rand(30.00 .. 60.00),
+              taxa_reserva: rand(10.00 .. 20.00),
+              aberto: true,
+              dono_estacionamentos_id: u.dono_estacionamento.id
+  )
+
+  10.times do |t|
+    e.vacancies.build.save
+  end
+end
+
+#Criando 1 operador pra cada estacionamento
+50.times do |index|
+  u = User.create(name: Faker::Name.name,
+                  lastname: Faker::Name.last_name,
+                  email: "operadorest#{index}@email.com",
+                  tel: rand(998000000 .. 999999999),
+                  password: "123456",
+                  password_confirmation: "123456"
+              )
+  u.build_operador_estacionamento(estacionamento_id: index, cpf: rand(22222222222 .. 88888888888)).save
+  #u.update_attribute(:email, "operador#{index}@email.com")
+end
+
+
+#Criando dono sem estacionamentos
+10.times do |index|
+  u = User.create(name: Faker::Name.name,
+                  lastname: Faker::Name.last_name,
+                  email: "donoest#{50+index}@email.com",
+                  tel: rand(998000000 .. 999999999),
+                  password: "123456",
+                  password_confirmation: "123456"
+              )
+              
+  u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
+end
+
+#Criando donos e suas respectivas lojas
+50.times do |index|
+  u = User.create(name: Faker::Name.name,
+                  lastname: Faker::Name.last_name,
+                  email: "donoloja#{index}@email.com",
                   tel: rand(998000000 .. 999999999),
                   password: "123456",
                   password_confirmation: "123456"
               )
 
-  if ((index > 40) and (index < 70))
-    u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
-    u.update_attribute(:email, "donoloja#{index}@email.com")
-    Loja.create(
-              nome: Faker::Address.community,
-              endereco: Faker::Address.street_address,
-              latitude: rand(-22.99 .. -21.00),
-              longitude: rand(-43.31 .. -43.11),
-              cnpj: "1000987654",
-              store_owner_id: StoreOwner.last.id
-      )
-  elsif ((index > 71) and (index < 90))
-    u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: (index - 71)).save
-    u.update_attribute(:email, "operadorloja#{index}@email.com")
-  elsif index > 90
-    u.build_dono_estacionamento(cpf: rand(22222222222 .. 88888888888)).save
-    u.update_attribute(:email, "donoestacionamento#{index}@email.com")
-  else
-    n = u.build_normal_user(
-      balance: index,
-      cpf: rand(11111111111 .. 22222222222),
-      placa: rand(000 .. 999))
-    n.save
-    n.user.update_attribute(:email, "usuario#{index}@email.com")
-    n.cars.build(cor: "Prata", placa: rand(0000..9999), modelo: Faker::Name.name, marca: Faker::Name.last_name).save
-  end
+  u.build_store_owner(cpf: rand(88888888888 .. 99999999999)).save
+
+  Loja.create(
+            nome: Faker::Address.community,
+            endereco: Faker::Address.street_address,
+            latitude: rand(-22.99 .. -21.00),
+            longitude: rand(-43.31 .. -43.11),
+            cnpj: rand(11111111 .. 99999999),
+            store_owner_id: StoreOwner.last.id
+    )
 end
 
-Estacionamento.destroy_all
+#Criando 1 operador pra cada loja
+50.times do |index|
+  u = User.create(name: Faker::Name.name,
+                  lastname: Faker::Name.last_name,
+                  email: "operadorloja#{index}@email.com",
+                  tel: rand(998000000 .. 999999999),
+                  password: "123456",
+                  password_confirmation: "123456"
+              )
+  u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: index).save
+  #u.update_attribute(:email, "operador#{index}@email.com")
+end
 
+#Criando estacionamentos especificos 
 e = Estacionamento.create(
             nome: "Campo de São Bento",
             endereco: Faker::Name.name,
@@ -105,39 +198,3 @@ e = Estacionamento.create(
 10.times do |t|
   e.vacancies.build.save
 end
-
-50.times do |index|
-  e = Estacionamento.create(
-              nome: Faker::Address.community,
-              endereco: Faker::Address.street_address,
-              telefone: rand(998000000 .. 999999999),
-              razao_social: Faker::Name.name,
-              cnpj: rand(11111111 .. 99999999),
-              latitude: rand(-22.99 .. -21.00),
-              longitude: rand(-43.20 .. -43.10),
-              primeira_hora: rand(5.00 .. 10.00),
-              hora: rand(6.00 .. 11.00),
-              mensal: rand(30.00 .. 60.00),
-              taxa_reserva: rand(10.00 .. 20.00),
-              aberto: true,
-              dono_estacionamentos_id: DonoEstacionamento.first.id
-
-
-  )
-
-  10.times do |t|
-    e.vacancies.build.save
-  end
-  end
-
-  3.times do |index|
-    u = User.create(name: Faker::Name.name,
-                    lastname: Faker::Name.last_name,
-                    email: "#{(100+index)}@junior.com",
-                    tel: rand(998000000 .. 999999999),
-                    password: "123456",
-                    password_confirmation: "123456"
-                )
-    u.build_operador_estacionamento(estacionamento_id: 1, cpf: rand(22222222222 .. 88888888888)).save
-    u.update_attribute(:email, "operador#{index}@email.com")
-  end

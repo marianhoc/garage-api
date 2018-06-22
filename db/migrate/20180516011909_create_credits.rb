@@ -3,6 +3,7 @@ class CreateCredits < ActiveRecord::Migration[5.1]
     create_table :credits do |t|
       t.references :normal_user, foreign_key: true
       t.bigint :value
+      t.string :nota_fiscal
 
       t.timestamps
     end
