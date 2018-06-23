@@ -8,7 +8,7 @@ class CreateEstacionamentos < ActiveRecord::Migration[5.1]
       t.string :cnpj
       t.string :latitude
       t.string :longitude
-      t.boolean :favorite
+      t.boolean :favorite,  defeault: false
 
       t.timestamps
     end
