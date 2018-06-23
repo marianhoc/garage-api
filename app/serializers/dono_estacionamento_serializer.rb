@@ -3,7 +3,4 @@ class DonoEstacionamentoSerializer < ActiveModel::Serializer
   belongs_to :user
 
   has_many :estacionamentos
-
-
-
 end

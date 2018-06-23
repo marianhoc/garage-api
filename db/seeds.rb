@@ -86,9 +86,7 @@ end
                   password_confirmation: "123456"
               )
   u.build_operador_estacionamento(estacionamento_id: index, cpf: rand(22222222222 .. 88888888888)).save
-  #u.update_attribute(:email, "operador#{index}@email.com")
 end
-
 
 #Criando dono sem estacionamentos
 10.times do |index|
