@@ -4,6 +4,7 @@ class Estacionamento < ApplicationRecord
     has_many :reservations, dependent: :destroy
     has_many :vacancies, dependent: :destroy
     has_many :operador_estacionamentos, dependent: :destroy
+    has_many :estacionamentos_favoritos, dependent: :destroy
 
     validates :nome, presence: true, length: { in: 2..255 }
     validates :endereco, presence: true, length: { in: 10..255 }

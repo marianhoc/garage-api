@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180622210349) do
+ActiveRecord::Schema.define(version: 20180623201805) do
 
   create_table "admins", force: :cascade do |t|
     t.integer "user_id"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20180622210349) do
     t.string "cnpj"
     t.string "latitude"
     t.string "longitude"
-    t.boolean "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "primeira_hora", precision: 15, scale: 3
@@ -77,6 +76,15 @@ ActiveRecord::Schema.define(version: 20180622210349) do
     t.integer "vagas_ativas", default: 10
     t.integer "vagas_ocupadas", default: 0
     t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"
+  end
+
+  create_table "estacionamentos_favoritos", force: :cascade do |t|
+    t.integer "normal_user_id"
+    t.integer "estacionamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estacionamento_id"], name: "index_estacionamentos_favoritos_on_estacionamento_id"
+    t.index ["normal_user_id"], name: "index_estacionamentos_favoritos_on_normal_user_id"
   end
 
   create_table "lojas", force: :cascade do |t|

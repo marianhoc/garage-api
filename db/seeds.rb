@@ -68,7 +68,6 @@ end
               mensal: rand(30.00 .. 60.00),
               taxa_reserva: rand(10.00 .. 20.00),
               aberto: true,
-              aberto: false,
               dono_estacionamentos_id: u.dono_estacionamento.id
   )
 
@@ -196,4 +195,12 @@ e = Estacionamento.create(
 
 10.times do |t|
   e.vacancies.build.save
+end
+
+#Favoritando estacionamentos
+50.times do |index|
+  EstacionamentosFavorito.create(
+    normal_user_id:  index,
+    estacionamento_id: index,
+              )
 end

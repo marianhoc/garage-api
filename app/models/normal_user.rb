@@ -5,6 +5,7 @@ class NormalUser < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :cars, dependent: :destroy
   has_many :cards, dependent: :destroy
+  has_many :estacionamentos_favoritos, dependent: :destroy 
 
 
   def add_credits(valor = 0, nota_fiscal = "")

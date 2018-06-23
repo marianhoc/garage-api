@@ -14,7 +14,6 @@ class User < ApplicationRecord
   has_one :operador_loja, dependent: :destroy
   has_one :admin, dependent: :destroy
 
-
   def parceiro?
     return true if self.partner
     false
