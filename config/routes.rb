@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'reservations/normal_user/:normal_user_id', to: 'reservations#normal_user_reservations'
   get 'reservations/estacionamento/:operador_estacionamento_id', to: 'reservations#estacionamento_reservations'
-  get 'reservations/today/:operador_estacionamento_id', to: 'reservations#estacionamento_reservations_today'
+  get 'reservations/today/:worker_id/:worker_type', to: 'reservations#estacionamento_reservations_today'
   get 'reservations/confirm/:reservation_id/:operador_estacionamento_id', to: 'reservations#confirm_reservation'
   put 'reservations/checkin', to: 'reservations#checkin'
   put 'reservations/deny', to: 'reservations#deny_reservation'
