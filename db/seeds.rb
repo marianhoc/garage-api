@@ -45,7 +45,7 @@ end
 end
 
 #Criando Donos e respectivos estacionamentos
-50.times do |index|
+55.times do |index|
   u = User.create(name: Faker::Name.name,
                   lastname: Faker::Name.last_name,
                   email: "donoest#{index}@email.com",
@@ -58,6 +58,9 @@ end
   e = Estacionamento.create(
               nome: Faker::Address.community,
               endereco: Faker::Address.street_address,
+              bairro: Faker::Address.community,
+              cidade: Faker::Address.country,
+              estado: Faker::Address.state_abbr,
               telefone: rand(998000000 .. 999999999),
               razao_social: Faker::Name.name,
               cnpj: rand(11111111 .. 99999999),
@@ -68,10 +71,13 @@ end
               mensal: rand(30.00 .. 60.00),
               taxa_reserva: rand(10.00 .. 20.00),
               aberto: true,
-              dono_estacionamentos_id: u.dono_estacionamento.id
+              dono_estacionamentos_id: u.dono_estacionamento.id,
+              total_vagas: 10,
+              agencia: rand(111 .. 999),
+              conta: rand(11111 .. 99999) 
   )
 
-  10.times do |t|
+  e.total_vagas.times do |t|
     e.vacancies.build.save
   end
 end
@@ -133,13 +139,15 @@ end
                   password_confirmation: "123456"
               )
   u.build_operador_loja(cpf: rand(22222222222 .. 88888888888), loja_id: index).save
-  #u.update_attribute(:email, "operador#{index}@email.com")
 end
 
 #Criando estacionamentos especificos 
 e = Estacionamento.create(
             nome: "Campo de São Bento",
-            endereco: Faker::Name.name,
+            endereco: Faker::Address.street_address,
+            bairro: Faker::Address.community,
+            cidade: Faker::Address.country,
+            estado: Faker::Address.state_abbr,
             telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
@@ -150,16 +158,22 @@ e = Estacionamento.create(
             mensal: rand(30.00 .. 60.00),
             taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id
+            dono_estacionamentos_id: DonoEstacionamento.first.id,
+            total_vagas: 10,
+            agencia: rand(111 .. 999),
+            conta: rand(11111 .. 99999)
             )
 
-10.times do |t|
+e.total_vagas.times do |t|
   e.vacancies.build.save
 end
 
 e = Estacionamento.create(
             nome: "Plaza Shopping",
-            endereco: Faker::Name.name,
+            endereco: Faker::Address.street_address,
+            bairro: Faker::Address.community,
+            cidade: Faker::Address.country,
+            estado: Faker::Address.state_abbr,
             telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
@@ -170,16 +184,22 @@ e = Estacionamento.create(
             mensal: rand(30.00 .. 60.00),
             taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id + 2
+            dono_estacionamentos_id: DonoEstacionamento.first.id + 2,
+            total_vagas: 10,
+            agencia: rand(111 .. 999),
+            conta: rand(11111 .. 99999)
             )
 
-10.times do |t|
+e.total_vagas.times do |t|
   e.vacancies.build.save
 end
 
 e = Estacionamento.create(
             nome: "UFF",
-            endereco: Faker::Name.name,
+            endereco: Faker::Address.street_address,
+            bairro: Faker::Address.community,
+            cidade: Faker::Address.country,
+            estado: Faker::Address.state_abbr,
             telefone: rand(998000000 .. 999999999),
             razao_social: Faker::Name.name,
             cnpj: rand(11111111 .. 99999999),
@@ -190,10 +210,13 @@ e = Estacionamento.create(
             mensal: rand(30.00 .. 60.00),
             taxa_reserva: rand(10.00 .. 20.00),
             aberto: true,
-            dono_estacionamentos_id: DonoEstacionamento.first.id + 1
+            dono_estacionamentos_id: DonoEstacionamento.first.id + 1,
+            total_vagas: 10,
+            agencia: rand(111 .. 999),
+            conta: rand(11111 .. 99999)
             )
 
-10.times do |t|
+e.total_vagas.times do |t|
   e.vacancies.build.save
 end
 

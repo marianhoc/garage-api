@@ -53,6 +53,7 @@ class EstacionamentosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def estacionamento_params
-      params.require(:estacionamento).permit(:nome, :endereco, :telefone, :razao_social, :cnpj, :aberto)
+      params.require(:estacionamento).permit(:nome, :endereco, :telefone, :razao_social, :cnpj, :aberto, 
+        :bairro, :cidade, :estado, :agencia, :conta, :total_vagas)
     end
 end
