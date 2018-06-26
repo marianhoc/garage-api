@@ -22,12 +22,19 @@ class EstacionamentosController < ApplicationController
 
   # POST /estacionamentos
   def create
-    @estacionamento = Estacionamento.new(estacionamento_params)
+    dono = User.find_by(email: params[:estacionamento][:dono_estacionamento])
 
-    if @estacionamento.save
-      render json: @estacionamento, status: :created, location: @estacionamento
+    if !dono.nil? && dono.dono_estacionamento
+      #render json: { sucesso: "Dono de estacionamento encontrado", dono: dono }
+      @estacionamento = dono.dono_estacionamento.estacionamentos.build(estacionamento_params)
+
+      if @estacionamento.save
+        render json: @estacionamento, status: :created, location: @estacionamento
+      else
+        render json: @estacionamento.errors, status: :unprocessable_entity
+      end
     else
-      render json: @estacionamento.errors, status: :unprocessable_entity
+      render json: { error: "Dono de estacionamento não encontrado" }, status: :unprocessable_entity
     end
   end
 
