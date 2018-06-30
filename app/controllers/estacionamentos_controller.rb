@@ -1,5 +1,18 @@
 class EstacionamentosController < ApplicationController
   before_action :set_estacionamento, only: [:show, :update, :destroy]
+  before_action :is_admin, only: [:set_total_vagas]
+
+  def set_total_vagas
+    @estacionamento = Estacionamento.find_by(id: params[:estacionamento][:id])
+    if params[:operation] == "aumenta"
+      @estacionamento.aumenta_total_vagas()
+      render json: @estacionamento
+    elsif @estacionamento.diminui_total_vagas()
+      render json: @estacionamento
+    else
+      render json: @estacionamento.errors, status: :unprocessable_entity
+    end
+  end
 
   def index_operador
     @estacionamentos = Estacionamento.where(

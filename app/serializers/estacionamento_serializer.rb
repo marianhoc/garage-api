@@ -1,7 +1,8 @@
 class EstacionamentoSerializer < ActiveModel::Serializer
   attributes :id, :nome, :endereco, :telefone, :razao_social,
     :cnpj, :latitude, :longitude, :primeira_hora, :mensal, :hora, :aberto, 
-    :taxa_reserva, :bairro, :cidade, :estado, :agencia, :conta, :total_vagas, :created_at, :updated_at
+    :taxa_reserva, :bairro, :cidade, :estado, :agencia, :conta, :total_vagas, :created_at, :updated_at,
+    :vagas_ativas, :vagas_ocupadas
 
   belongs_to :dono_estacionamentos, class_name: "DonoEstacionamento"
 

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   post "normal_users/:normal_user_id/newcartao", to: 'normal_users#save_cartao'
   delete "normal_users/:normal_user_id/deletecartao/:id", to: 'normal_users#destroy_cartao'
 
+  put "estacionamentos/set_total_vagas", to: 'estacionamentos#set_total_vagas'
   get "estacionamentos/operador/:operador_estacionamento_id", to: 'estacionamentos#index_operador'
   resources :estacionamentos
 

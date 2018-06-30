@@ -18,8 +18,10 @@ class ReservationsController < ApplicationController
     etacionamento = nil
     if params[:worker_type] == "operador"
       estacionamento = Estacionamento.find_by(id: OperadorEstacionamento.find(params[:worker_id]))
-    else
+    elsif params[:worker_type] == "dono"
       estacionamento = Estacionamento.find_by(id: DonoEstacionamento.find(params[:worker_id]))
+    else
+      estacionamento = Estacionamento.find_by(id: params[:worker_id])
     end
     initial_date = Time.new(Time.zone.now.year, Time.zone.now.month, Time.zone.now.day, 00, 00, 00).to_datetime
     final_date = Time.new(Time.zone.now.year, Time.zone.now.month, Time.zone.now.day, 23, 59, 59).to_datetime

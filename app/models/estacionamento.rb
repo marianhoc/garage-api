@@ -29,4 +29,20 @@ class Estacionamento < ApplicationRecord
         self.vagas_ocupadas -= 1
         self.save
     end
+
+    def aumenta_total_vagas()
+        self.update_attribute(:total_vagas, (self.total_vagas + 1) )
+    end
+
+    def diminui_total_vagas()
+        if self.total_vagas == 0
+            self.errors.add(:total_vagas, "não pode ser menor do que 0")
+            return false
+        elsif self.total_vagas == self.vagas_ocupadas
+            self.errors.add(:total_vagas, "não pode ser menor do que número de vagas ocupadas")
+            return false
+        else
+            self.update_attribute(:total_vagas, (self.total_vagas - 1) )
+        end
+    end
 end
