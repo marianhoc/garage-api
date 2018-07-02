@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180623201805) do
     t.string "cnpj"
     t.string "latitude"
     t.string "longitude"
-    t.integer "total_vagas"
+    t.integer "total_vagas", default: 0
     t.string "agencia"
     t.string "conta"
     t.datetime "created_at", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20180623201805) do
     t.decimal "taxa_reserva", precision: 15, scale: 3
     t.boolean "aberto"
     t.integer "dono_estacionamentos_id"
-    t.integer "vagas_ativas", default: 10
+    t.integer "vagas_ativas", default: 0
     t.integer "vagas_ocupadas", default: 0
     t.index ["dono_estacionamentos_id"], name: "index_estacionamentos_on_dono_estacionamentos_id"
   end

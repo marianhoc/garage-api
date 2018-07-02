@@ -18,6 +18,8 @@ class Estacionamento < ApplicationRecord
     validates :conta, presence: true, length: { in: 2..50 }
     validates :total_vagas, presence: true, length: { in: 1..10000 }
 
+    after_create :set_vagas_ativas
+
     def aumenta_vagas_ocupadas()
         self.vagas_ativas -= 1
         self.vagas_ocupadas += 1
@@ -31,7 +33,9 @@ class Estacionamento < ApplicationRecord
     end
 
     def aumenta_total_vagas()
-        self.update_attribute(:total_vagas, (self.total_vagas + 1) )
+        if self.update_attribute(:total_vagas, (self.total_vagas + 1) )
+            self.update_attribute(:vagas_ativas, (self.vagas_ativas + 1) )
+        end
     end
 
     def diminui_total_vagas()
@@ -41,8 +45,14 @@ class Estacionamento < ApplicationRecord
         elsif self.total_vagas == self.vagas_ocupadas
             self.errors.add(:total_vagas, "não pode ser menor do que número de vagas ocupadas")
             return false
-        else
-            self.update_attribute(:total_vagas, (self.total_vagas - 1) )
+        elsif self.update_attribute(:total_vagas, (self.total_vagas - 1) )
+            self.update_attribute(:vagas_ativas, (self.vagas_ativas - 1) )
         end
+    end
+
+    # para funcionar dessa forma, todo estacionamento deve ao ser criado, 
+    # já possuir um número de reservas do paremais pré-determinado ou zero
+    def set_vagas_ativas()
+        self.update_attribute(:vagas_ativas, self.total_vagas)
     end
 end
